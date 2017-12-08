@@ -114,7 +114,7 @@ class predict:
 
         return chunks
 
-    def output_batch(self, ner_model, documents, fout):
+    def output_batch(self, ner_model, documents, fout, file_no):
         """
         decode the whole corpus in the specific format by calling apply_model to fit specific models
 
@@ -133,7 +133,7 @@ class predict:
             f_len = len(features)
             for ind in range(0, f_len, self.batch_size):
                 eind = min(f_len, ind + self.batch_size)
-                labels = self.apply_model(ner_model, features[ind: eind])
+                labels = self.apply_model(ner_model, features[ind: eind], file_no)
                 labels = torch.unbind(labels, 1)
 
                 for ind2 in range(ind, eind):
@@ -229,7 +229,7 @@ class predict_wc(predict):
         self.l_map = l_map
         self.caseless = caseless
         
-    def apply_model(self, ner_model, features):
+    def apply_model(self, ner_model, features, file_no):
         """
         apply_model function for LM-LSTM-CRF
 
@@ -273,7 +273,7 @@ class predict_wc(predict):
             w_f = autograd.Variable(word_t.transpose(0, 1))
             mask_v = masks.transpose(0, 1)
 
-        scores = ner_model(f_f, f_p, b_f, b_p, w_f)
+        scores = ner_model(f_f, f_p, b_f, b_p, w_f, file_no)
         decoded = self.decoder.decode(scores.data, mask_v)
 
         return decoded

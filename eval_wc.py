@@ -23,18 +23,16 @@ import functools
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Evaluating LM-BLSTM-CRF')
     parser.add_argument('--load_arg', default='./checkpoint/soa/check_wc_p_char_lstm_crf.json', help='path to arg json')
-    parser.add_argument('--load_check_point', default='./checkpoint/soa/check_wc_p_char_lstm_crf.model', help='path to model checkpoint file')
+    parser.add_argument('--load_check_point', default='./checkpoint/soa/check_wc_p_char_lstm_crf.model',, help='path to model checkpoint file')
     parser.add_argument('--gpu',type=int, default=0, help='gpu id')
     parser.add_argument('--eva_matrix', choices=['a', 'fa'], default='fa', help='use f1 and accuracy or f1 alone')
-    parser.add_argument('--dev_file', default='', help='path to development file, if set to none, would use dev_file path in the checkpoint file')
-    parser.add_argument('--test_file', default='', help='path to test file, if set to none, would use test_file path in the checkpoint file')
     args = parser.parse_args()
 
     with open(args.load_arg, 'r') as f:
         jd = json.load(f)
     jd = jd['args']
 
-    checkpoint_file = torch.load(args.load_check_point, map_location=lambda storage, loc: storage)
+    checkpoint_file = torch.load(args.load_check_point)
     f_map = checkpoint_file['f_map']
     l_map = checkpoint_file['l_map']
     c_map = checkpoint_file['c_map']
@@ -44,19 +42,10 @@ if __name__ == "__main__":
 
 
     # load corpus
-    if args.dev_file:
-        with codecs.open(args.dev_file, 'r', 'utf-8') as f:
-            dev_lines = f.readlines()
-    else:
-        with codecs.open(jd['dev_file'], 'r', 'utf-8') as f:
-            dev_lines = f.readlines()
-            
-    if args.test_file:
-        with codecs.open(args.test_file, 'r', 'utf-8') as f:
-            test_lines = f.readlines()
-    else:
-        with codecs.open(jd['test_file'], 'r', 'utf-8') as f:
-            test_lines = f.readlines()
+    with codecs.open(jd['dev_file'], 'r', 'utf-8') as f:
+        dev_lines = f.readlines()
+    with codecs.open(jd['test_file'], 'r', 'utf-8') as f:
+        test_lines = f.readlines()
 
     # converting format
 
@@ -86,7 +75,6 @@ if __name__ == "__main__":
 
     evaluator = eval_wc(packer, l_map, args.eva_matrix)
 
-    print('start')
     if 'f' in args.eva_matrix:
 
         dev_f1, dev_pre, dev_rec, dev_acc = evaluator.calc_score(ner_model, dev_dataset_loader)
@@ -102,4 +90,3 @@ if __name__ == "__main__":
         test_acc = evaluator.calc_score(ner_model, test_dataset_loader)
 
         print(jd['checkpoint'] + ' dev_acc: %.4f test_acc: %.4f\n' % (dev_acc, test_acc))
-    print('end')

@@ -166,6 +166,7 @@ class eval_w(eval_batch):
             fea_v, _, mask_v = self.packer.repack_vb(feature, tg, mask)
             scores, _ = ner_model(fea_v)
             decoded = self.decoder.decode(scores.data, mask_v.data)
+
             self.eval_b(decoded, tg)
 
         return self.calc_s()
@@ -192,7 +193,7 @@ class eval_wc(eval_batch):
             self.eval_b = self.calc_acc_batch
             self.calc_s = self.acc_score
 
-    def calc_score(self, ner_model, dataset_loader):
+    def calc_score(self, ner_model, dataset_loader, file_no):
         """
         calculate score for pre-selected metrics
 
@@ -205,8 +206,9 @@ class eval_wc(eval_batch):
 
         for f_f, f_p, b_f, b_p, w_f, tg, mask_v, len_v in itertools.chain.from_iterable(dataset_loader):
             f_f, f_p, b_f, b_p, w_f, _, mask_v = self.packer.repack_vb(f_f, f_p, b_f, b_p, w_f, tg, mask_v, len_v)
-            scores = ner_model(f_f, f_p, b_f, b_p, w_f)
+            scores = ner_model(f_f, f_p, b_f, b_p, w_f, file_no)
             decoded = self.decoder.decode(scores.data, mask_v.data)
+
             self.eval_b(decoded, tg)
 
         return self.calc_s()

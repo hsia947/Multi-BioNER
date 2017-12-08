@@ -121,7 +121,7 @@ def encode2Tensor(input_lines, word_dict, unk):
     return lines
 
 
-def generate_corpus_char(lines, if_shrink_c_feature=False, c_thresholds=1, if_shrink_w_feature=False, w_thresholds=1):
+def generate_corpus_char(lines, feature_map, label_map, char_count, c_thresholds=1, if_shrink_w_feature=False, w_thresholds=1):
     """
     generate label, feature, word dictionary, char dictionary and label dictionary
 
@@ -133,24 +133,16 @@ def generate_corpus_char(lines, if_shrink_c_feature=False, c_thresholds=1, if_sh
         w_threshold: threshold for shrinking word-dictionary
         
     """
-    features, labels, feature_map, label_map = generate_corpus(lines, if_shrink_feature=if_shrink_w_feature, thresholds=w_thresholds)
-    char_count = dict()
+    features, labels, feature_map, label_map = generate_corpus(lines, feature_map, label_map, if_shrink_feature=if_shrink_w_feature, thresholds=w_thresholds)
     for feature in features:
         for word in feature:
             for tup in word:
                 if tup not in char_count:
-                    char_count[tup] = 0
+                    char_count[tup] = len(char_count)
                 else:
                     char_count[tup] += 1
-    if if_shrink_c_feature:
-        shrink_char_count = [k for (k, v) in iter(char_count.items()) if v >= c_thresholds]
-        char_map = {shrink_char_count[ind]: ind for ind in range(0, len(shrink_char_count))}
-    else:
-        char_map = {k: v for (v, k) in enumerate(char_count.keys())}
-    char_map['<u>'] = len(char_map)  # unk for char
-    char_map[' '] = len(char_map)  # concat for char
-    char_map['\n'] = len(char_map)  # eof for char
-    return features, labels, feature_map, label_map, char_map
+
+    return features, labels, feature_map, label_map, char_count
 
 def shrink_features(feature_map, features, thresholds):
     """
@@ -166,10 +158,11 @@ def shrink_features(feature_map, features, thresholds):
     #inserting unk to be 0 encoded
     feature_map['<unk>'] = 0
     #inserting eof
-    feature_map['<eof>'] = len(feature_map)
+    if '<eof>' not in feature_map:
+        feature_map['<eof>'] = len(feature_map)
     return feature_map
 
-def generate_corpus(lines, if_shrink_feature=False, thresholds=1):
+def generate_corpus(lines, feature_map, label_map, if_shrink_feature=False, thresholds=1):
     """
     generate label, feature, word dictionary and label dictionary
 
@@ -183,8 +176,6 @@ def generate_corpus(lines, if_shrink_feature=False, thresholds=1):
     labels = list()
     tmp_fl = list()
     tmp_ll = list()
-    feature_map = dict()
-    label_map = dict()
     for line in lines:
         if not (line.isspace() or (len(line) > 10 and line[0:10] == '-DOCSTART-')):
             line = line.rstrip('\n').split()
@@ -202,15 +193,18 @@ def generate_corpus(lines, if_shrink_feature=False, thresholds=1):
     if len(tmp_fl) > 0:
         features.append(tmp_fl)
         labels.append(tmp_ll)
-    label_map['<start>'] = len(label_map)
-    label_map['<pad>'] = len(label_map)
+    if '<start>' not in label_map:
+        label_map['<start>'] = len(label_map)
+    if '<pad>' not in label_map:
+        label_map['<pad>'] = len(label_map)
     if if_shrink_feature:
         feature_map = shrink_features(feature_map, features, thresholds)
     else:
         #inserting unk to be 0 encoded
         feature_map['<unk>'] = 0
         #inserting eof
-        feature_map['<eof>'] = len(feature_map)
+        if '<eof>' not in feature_map:
+            feature_map['<eof>'] = len(feature_map)
 
     return features, labels, feature_map, label_map
 
@@ -239,45 +233,30 @@ def read_corpus(lines):
 
     return features, labels
 
-def read_features(lines, multi_docs = True):
+def read_features(lines): #NEW
     """
     convert un-annotated corpus into features
     """
-    if multi_docs:
-        documents = list()
-        features = list()
-        tmp_fl = list()
-        for line in lines:
-            if_doc_end = (len(line) > 10 and line[0:10] == '-DOCSTART-')
-            if not (line.isspace() or if_doc_end):
-                line = line.split()[0]
-                tmp_fl.append(line)
-            else:
-                if len(tmp_fl) > 0:
-                    features.append(tmp_fl)
-                    tmp_fl = list()
-                if if_doc_end and len(features) > 0:
-                    documents.append(features)
-                    features = list()
-        if len(tmp_fl) > 0:
-            features.append(tmp_fl)
-        if len(features) >0:
-            documents.append(features)
-        return documents
-    else:
-        features = list()
-        tmp_fl = list()
-        for line in lines:
-            if not (line.isspace() or (len(line) > 10 and line[0:10] == '-DOCSTART-')):
-                line = line.split()[0]
-                tmp_fl.append(line)
-            elif len(tmp_fl) > 0:
+    documents = list()
+    features = list()
+    tmp_fl = list()
+    for line in lines:
+        if_doc_end = (len(line) > 10 and line[0:10] == '-DOCSTART-')
+        if not (line.isspace() or if_doc_end):
+            tmp = line.rstrip().split()
+            tmp_fl.append(tmp[0])
+        else:
+            if len(tmp_fl) > 0:
                 features.append(tmp_fl)
                 tmp_fl = list()
-        if len(tmp_fl) > 0:
-            features.append(tmp_fl)
-     
-        return features
+            if if_doc_end and len(features) > 0:
+                documents.append(features)
+                features = list()
+    if len(tmp_fl) > 0:
+        features.append(tmp_fl)
+    if len(features) >0:
+        documents.append(features)
+    return documents
 
 def shrink_embedding(feature_map, word_dict, word_embedding, caseless):
     """
@@ -396,8 +375,8 @@ def load_embedding_wlm(emb_file, delimiter, feature_map, full_feature_set, casel
         caseless: convert into casesless style
         unk: string for unknown token
         emb_len: dimension of embedding vectors
-        shrink_to_train: whether to shrink out-of-training set or not
-        shrink_to_corpus: whether to shrink out-of-corpus or not
+        shrink: whether to shrink out-of-training set or not
+        shrink: whether to shrink out-of-corpus or not
     """
     if caseless:
         feature_set = set([key.lower() for key in feature_map])
@@ -555,9 +534,10 @@ def construct_bucket_vb_wc(word_features, forw_features, fea_len, input_labels, 
 
         padded_feature = f_f + [pad_char_feature] * (buckets_len[idx] - len(f_f))  # pad feature with <'\n'>, at least one
 
-        padded_feature_len = f_l + [1] * (thresholds[idx] - len(f_l)) # pad feature length with <'\n'>, at least one
-        padded_feature_len_cum = list(itertools.accumulate(padded_feature_len)) # start from 0, but the first is ' ', so the position need not to be -1
-        buckets[idx][0].append(padded_feature) # char
+        padded_feature_len = f_l + [1] * (thresholds[idx] - len(f_l))  # pad feature length with <'\n'>, at least one
+        padded_feature_len_cum = [tup for tup in itertools.accumulate(
+            padded_feature_len)]  # start from 0, but the first is ' ', so the position need not to be -1
+        buckets[idx][0].append(padded_feature)#char
         buckets[idx][1].append(padded_feature_len_cum)
         buckets[idx][2].append(padded_feature[::-1])
         buckets[idx][3].append([buckets_len[idx] - 1] + [buckets_len[idx] - 1 - tup for tup in padded_feature_len_cum[:-1]])
@@ -607,7 +587,8 @@ def construct_bucket_gd(input_features, input_labels, thresholds, pad_feature, p
         buckets[idx][0].append(feature + [pad_feature] * (thresholds[idx] - cur_len))
         buckets[idx][1].append(label[1:] + [pad_label] * (thresholds[idx] - cur_len))
         buckets[idx][2].append(label + [pad_label] * (thresholds[idx] - cur_len_1))
-    bucket_dataset = [CRFDataset(torch.LongTensor(bucket[0]), torch.LongTensor(bucket[1]), torch.LongTensor(bucket[2])) for bucket in buckets]
+    bucket_dataset = [CRFDataset(torch.LongTensor(bucket[0]), torch.LongTensor(bucket[1]), torch.LongTensor(bucket[2]))
+                      for bucket in buckets]
     return bucket_dataset
 
 

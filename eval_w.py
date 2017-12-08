@@ -26,15 +26,13 @@ if __name__ == "__main__":
     parser.add_argument('--load_check_point', default='./checkpoint/soa/check_wc_p_char_lstm_crf.model', help='checkpoint path')
     parser.add_argument('--gpu',type=int, default=0, help='gpu id')
     parser.add_argument('--eva_matrix', choices=['a', 'fa'], default='fa', help='use f1 and accuracy or accuracy alone')
-    parser.add_argument('--dev_file', default='', help='path to development file, if set to none, would use dev_file path in the checkpoint file')
-    parser.add_argument('--test_file', default='', help='path to test file, if set to none, would use test_file path in the checkpoint file')
     args = parser.parse_args()
 
     with open(args.load_arg, 'r') as f:
         jd = json.load(f)
     jd = jd['args']
 
-    checkpoint_file = torch.load(args.load_check_point, map_location=lambda storage, loc: storage)
+    checkpoint_file = torch.load(args.load_check_point)
     f_map = checkpoint_file['f_map']
     l_map = checkpoint_file['l_map']
     if args.gpu >= 0:
@@ -42,19 +40,10 @@ if __name__ == "__main__":
 
 
     # load corpus
-    if args.dev_file:
-        with codecs.open(args.dev_file, 'r', 'utf-8') as f:
-            dev_lines = f.readlines()
-    else:
-        with codecs.open(jd['dev_file'], 'r', 'utf-8') as f:
-            dev_lines = f.readlines()
-            
-    if args.test_file:
-        with codecs.open(args.test_file, 'r', 'utf-8') as f:
-            test_lines = f.readlines()
-    else:
-        with codecs.open(jd['test_file'], 'r', 'utf-8') as f:
-            test_lines = f.readlines()
+    with codecs.open(jd['dev_file'], 'r', 'utf-8') as f:
+        dev_lines = f.readlines()
+    with codecs.open(jd['test_file'], 'r', 'utf-8') as f:
+        test_lines = f.readlines()
 
     # converting format
 

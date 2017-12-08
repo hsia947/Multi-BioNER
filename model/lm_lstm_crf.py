@@ -34,7 +34,7 @@ class LM_LSTM_CRF(nn.Module):
         highway_layers: number of highway layers
     """
     
-    def __init__(self, tagset_size, char_size, char_dim, char_hidden_dim, char_rnn_layers, embedding_dim, word_hidden_dim, word_rnn_layers, vocab_size, dropout_ratio, large_CRF=True, if_highway = False, in_doc_words = 2, highway_layers = 1):
+    def __init__(self, tagset_size, char_size, char_dim, char_hidden_dim, char_rnn_layers, embedding_dim, word_hidden_dim, word_rnn_layers, vocab_size, dropout_ratio, file_num, large_CRF=True, if_highway = False, in_doc_words = 2, highway_layers = 1):
 
         super(LM_LSTM_CRF, self).__init__()
         self.char_dim = char_dim
@@ -59,10 +59,12 @@ class LM_LSTM_CRF(nn.Module):
         self.dropout = nn.Dropout(p=dropout_ratio)
 
         self.tagset_size = tagset_size
-        if large_CRF:
-            self.crf = crf.CRF_L(word_hidden_dim, tagset_size)
-        else:
-            self.crf = crf.CRF_S(word_hidden_dim, tagset_size)
+        self.crflist = nn.ModuleList()
+        for i in range(file_num):
+            if large_CRF:
+                self.crflist.append(crf.CRF_L(word_hidden_dim, tagset_size))
+            else:
+                self.crflist.append(crf.CRF_S(word_hidden_dim, tagset_size))
 
         if if_highway:
             self.forw2char = highway.hw(char_hidden_dim, num_layers=highway_layers, dropout_ratio=dropout_ratio)
@@ -131,7 +133,8 @@ class LM_LSTM_CRF(nn.Module):
         utils.init_lstm(self.word_lstm)
         utils.init_linear(self.char_pre_train_out)
         utils.init_linear(self.word_pre_train_out)
-        self.crf.rand_init()
+        for crf in self.crflist:
+            crf.rand_init()
 
     def word_pre_train_forward(self, sentence, position, hidden=None):
         """
@@ -194,7 +197,7 @@ class LM_LSTM_CRF(nn.Module):
         pre_score = self.word_pre_train_out(d_char_out)
         return pre_score, hidden
 
-    def forward(self, forw_sentence, forw_position, back_sentence, back_position, word_seq, hidden=None):
+    def forward(self, forw_sentence, forw_position, back_sentence, back_position, word_seq, file_no, hidden=None):
         '''
         args:
             forw_sentence (char_seq_len, batch_size) : char-level representation of sentence
@@ -249,7 +252,7 @@ class LM_LSTM_CRF(nn.Module):
         d_lstm_out = self.dropout(lstm_out)
 
         #convert to crf
-        crf_out = self.crf(d_lstm_out)
+        crf_out = self.crflist[file_no](d_lstm_out)
         crf_out = crf_out.view(self.word_seq_length, self.batch_size, self.tagset_size, self.tagset_size)
         
         return crf_out
