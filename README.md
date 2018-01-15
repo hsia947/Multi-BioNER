@@ -1,32 +1,17 @@
-# LM-LSTM-CRF 
+# Cross-type Biomedical Name Tagger with Deep Multi-task Learning
 
-[![Documentation Status](https://readthedocs.org/projects/lm-lstm-crf/badge/?version=latest)](http://lm-lstm-crf.readthedocs.io/en/latest/?badge=latest)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Insight.io](https://insight.io/repoBadge/github.com/LiyuanLucasLiu/LM-LSTM-CRF)](https://insight.io/github.com/LiyuanLucasLiu/LM-LSTM-CRF)
+This project provides a neural network based multi-task learning framework for biomedical named entity recognition (BioNER).
 
-This project provides high-performance character-aware sequence labeling tools, including [Training](#usage), [Evaluation](#evaluation) and [Prediction](#prediction). 
-
-Details about LM-LSTM-CRF can be accessed [here](http://arxiv.org/abs/1709.04109), and the implementation is based on the PyTorch library. Our model achieves F1 score of 91.71+/-0.10 on the CoNLL 2003 NER dataset, without using any additional corpus or resource.
-
-The documents would be available [here](http://lm-lstm-crf.readthedocs.io/en/latest/).
+The implementation is based on the PyTorch library. Our model collectively trains different biomedical entity types to build a unified model that benefits the training of each single entity type and achieves a significantly better performance compared with the state-of-
+the-art BioNER systems.
 
 ## Quick Links
 
-- [Model](#model-notes)
 - [Installation](#installation)
 - [Data](#data)
 - [Usage](#usage)
 - [Benchmarks](#benchmarks)
 - [Pretrained model](#pretrained-model)
-
-## Model Notes
-
-<p align="center"><img width="100%" src="docs/framework.png"/></p>
-
-As visualized above, we use conditional random field (CRF) to capture label dependencies, and adopt a hierarchical LSTM to leverage both char-level and word-level inputs. 
-The char-level structure is further guided by a language model, while pre-trained word embeddings are leveraged in word-level.
-The language model and the sequence labeling model are trained at the same time, and both make predictions at word-level.
-[Highway networks]("https://arxiv.org/abs/1507.06228") are used to transform the output of char-level LSTM into different semantic spaces, and thus mediating these two tasks and allowing language model to empower sequence labeling.
 
 ## Installation
 
