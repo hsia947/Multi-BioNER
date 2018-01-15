@@ -10,7 +10,7 @@ The implementation is based on the PyTorch library. Our model collectively train
 - [Data](#data)
 - [Usage](#usage)
 - [Benchmarks](#benchmarks)
-- [Pretrained model](#pretrained-model)
+- [Prediction](#prediction)
 
 ## Installation
 
@@ -102,55 +102,19 @@ Users can also refer to ```run_lm-lstm-crf.sh``` (single-task model) and ```run_
 
 ## Benchmarks
 
-Here we compare LM-LSTM-CRF with recent state-of-the-art models on the CoNLL 2000 Chunking dataset, the CoNLL 2003 NER dataset, and the WSJ portion of the PTB POS Tagging dataset. All experiments are conducted on a GTX 1080 GPU.
+Here we compare our model with recent state-of-the-art models on the five datasets mentioned above. We use F1 score as the evaluation metric.
 
-### NER
-
-When models are only trained on the CoNLL 2003 English NER dataset, the results are summarized as below.
-
-|Model | Max(F1) | Mean(F1) | Std(F1) | Reported(F1) | Time(h) |
+|Model | [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | [BC5CDR](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC5CDR-IOBES) | [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) |
 | ------------- |-------------| -----| -----| -----| ---- |
-| [Lample et al. 2016](https://github.com/glample/tagger) | 91.14 | 90.76 | 0.08 | 90.94 | 46 |
-| [Ma et al. 2016](https://github.com/XuezheMax/LasagneNLP) | 91.67 | 91.37 | 0.17 | 91.21 | 7 |
-| LM-LSTM-CRF | **91.85** | **91.71** | 0.10 | | 6 |
-
-### POS
-
-When models are only trained on the WSJ portion of the PTB POS Tagging dataset, the results are summarized as below.
-
-|Model | Max(Acc) | Mean(Acc) | Std(Acc) | Reported(Acc) | Time(h) |
-| ------------- |-------------| -----| -----| -----| ---- |
-| [Lample et al. 2016](https://github.com/glample/tagger) | 97.51 | 97.35 | 0.09 | N/A | 37 |
-| [Ma et al. 2016](https://github.com/XuezheMax/LasagneNLP) | 97.46 | 97.42 | 0.04 | 97.55 | 21 |
-| LM-LSTM-CRF | **97.59** | **97.53** | 0.03 | | 16 |
-
-### Chunking
-
-When models are only trained on the CoNLL 2000 Chunking dataset, the results are summarized as below.
-
-|Model | Max(F1) | Mean(F1) | Std(F1) | Time(h) |
-| ------------- |-------------| -----| -----| ----|
-| [Lample et al. 2016](https://github.com/glample/tagger) | 94.49 | 94.37 | 0.07 | 26 |
-| [Ma et al. 2016](https://github.com/XuezheMax/LasagneNLP) | 95.93 | 95.80 | 0.13 | 6|
-| LM-LSTM-CRF | **96.13** | **95.96** | 0.08 | 5 |
+| Dataset Benchmark | 87.21 | 87.39 | 86.76 | 82.90 | 72.55 |
+| [Crichton et al. 2016](https://github.com/cambridgeltl/MTL-Bioinformatics-2016) | 84.41 | 83.02 | 83.90 | 80.37 | 70.09 |
+| [Lample et al. 2016](https://github.com/glample/tagger) | 86.53 | 86.62 | 86.61 | 84.64 | 73.48 |
+| [Ma et al. 2016](https://github.com/XuezheMax/LasagneNLP) | 85.27 | 86.43 | 83.24 | 84.04 | 74.40 |
+| [Liu et al. 2018](https://github.com/LiyuanLucasLiu/LM-LSTM-CRF) | 87.82 | 87.01 | 85.18 | 85.10 | 74.69 |
+| Our Model | **89.06** | **88.50** | **87.18** | **86.08** | **75.04** |
 
 
-## Pretrained Model
-
-### Evaluation
-We released pre-trained model on these three tasks. The checkpoint file can be downloaded at:
-
- 
-| CoNLL03 NER | WSJ-PTB POS Tagging | CoNLL00 Chunking|
-| ------------ | -------------------| -----------------|
-| [Args](https://drive.google.com/file/d/0B587SdKqutQmN1UwNjhHQkhUWEk/view?usp=sharing) | [Args](https://drive.google.com/a/illinois.edu/file/d/0B587SdKqutQmN1UwNjhHQkhUWEk/view?usp=sharing) | [Args](https://drive.google.com/file/d/0B587SdKqutQmYmpiNFp6b1hKWEE/view?usp=sharing) |
-| [Model](https://drive.google.com/file/d/0B587SdKqutQmSDlJRGRNandhMGs/view?usp=sharing) | [Model](https://drive.google.com/a/illinois.edu/file/d/0B587SdKqutQmSDlJRGRNandhMGs/view?usp=sharing) | [Model](https://drive.google.com/file/d/0B587SdKqutQmNnR3Nnk1WHdIMG8/view?usp=sharing) |
-
-Also, ```eval_wc.py``` is provided to load and run these checkpoints. Its usage can be accessed by command ````python eval_wc.py -h````, and a running command example is provided below:
-```
-python eval_wc.py --load_arg checkpoint/ner/ner_4_cwlm_lstm_crf.json --load_check_point checkpoint/ner_ner_4_cwlm_lstm_crf.model --gpu 0 --dev_file ./data/ner/testa.txt --test_file ./data/ner/testb.txt
-```
-### Prediction
+## Prediction
 
 To annotated raw text, ```seq_wc.py``` is provided to annotate un-annotated text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
 ```
@@ -195,15 +159,4 @@ and the corresponding output is:
 
 But <LOC> China </LOC> saw their luck desert them in the second match of the group , crashing to a surprise 2-0 defeat to newcomers <LOC> Uzbekistan </LOC> . 
 
-```
-
-## Reference
-
-```
-@inproceedings{2017arXiv170904109L,
-  title = "{Empower Sequence Labeling with Task-Aware Neural Language Model}", 
-  author = {{Liu}, L. and {Shang}, J. and {Xu}, F. and {Ren}, X. and {Gui}, H. and {Peng}, J. and {Han}, J.}, 
-  booktitle={AAAI},
-  year = 2018, 
-}
 ```
