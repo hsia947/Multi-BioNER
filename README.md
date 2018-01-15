@@ -29,19 +29,20 @@ pip3 install -r requirements.txt
 
 ## Data
 
-We use five biomedical corpus collected by Crichton et al. for biomedical NER. The dataset is publicly available and can be downloaded from [here](https://github.com/cambridgeltl/MTL-Bioinformatics-2016). The details of each dataset are listed below:
+We use five biomedical corpora collected by Crichton et al. for biomedical NER. The dataset is publicly available and can be downloaded from [here](https://github.com/cambridgeltl/MTL-Bioinformatics-2016). The details of each dataset are listed below:
 
 |Dataset | Entity Type | Dataset Size |
 | ------------- |-------------| -----|
-| [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | Gene/Protein | 20000 sentences |
-| [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | Chemical | 20000 sentences |
-| [BC5CDR](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC5CDR-IOBES) | Chemical, Disease | 20000 sentences |
-| [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 20000 sentences |
-| [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 20000 sentences |
+| [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | Gene/Protein | 20,000 sentences |
+| [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | Chemical | 10,000 abstracts |
+| [BC5CDR](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC5CDR-IOBES) | Chemical, Disease | 1,500 articles |
+| [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 793 abstracts |
+| [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
 ### Format
 
-We assume the corpus is formatted as same as the CoNLL 2003 NER dataset.
+Users may want to use other datasets. We assume the corpus is formatted as same as the CoNLL 2003 NER dataset.
+
 More specifically, **empty lines** are used as separators between sentences, and the separator between documents is a special line as below.
 ```
 -DOCSTART- -X- -X- -X- O
@@ -52,58 +53,52 @@ For example, the first several lines in the WSJ portion of the PTB POS tagging c
 ```
 -DOCSTART- -X- -X- -X- O
 
-Pierre NNP
-Vinken NNP
-, ,
-61 CD
-years NNS
-old JJ
-, ,
-will MD
-join VB
-the DT
-board NN
-as IN
-a DT
-nonexecutive JJ
-director NN
-Nov. NNP
-29 CD
-. .
+Selegiline	S-Chemical
+-	O
+induced	O
+postural	B-Disease
+hypotension	E-Disease
+in	O
+Parkinson	B-Disease
+'	I-Disease
+s	I-Disease
+disease	E-Disease
+:	O
+a	O
+longitudinal	O
+study	O
+on	O
+the	O
+effects	O
+of	O
+drug	O
+withdrawal	O
+.	O
 
 
 ```
 
 ## Usage
 
-Here we provide implementations for two models, one is **LM-LSTM-CRF** and the other is its variant, **LSTM-CRF**, which only contains the word-level structure and CRF.
-```train_wc.py``` and ```eval_wc.py``` are scripts for LM-LSTM-CRF, while ```train_w.py``` and ```eval_w.py``` are scripts for LSTM-CRF.
+```train_wc.py``` and ```eval_wc.py``` are scripts for our multi-task LSTM-CRF model.
 The usages of these scripts can be accessed by the parameter ````-h````, i.e., 
 ```
 python train_wc.py -h
-python train_w.py -h
 python eval_wc.py -h
-python eval_w.py -h
 ```
 
-The default running commands for NER and POS tagging, and NP Chunking are:
+The default running commands are:
 
-- Named Entity Recognition (NER):
 ```
-python train_wc.py --train_file ./data/ner/train.txt --dev_file ./data/ner/testa.txt --test_file ./data/ner/testb.txt --checkpoint ./checkpoint/ner_ --caseless --fine_tune --high_way --co_train
-```
-
-- Part-of-Speech (POS) Tagging:
-```
-python train_wc.py --train_file ./data/pos/train.txt --dev_file ./data/pos/testa.txt --test_file ./data/pos/testb.txt --eva_matrix a --checkpoint ./checkpoint/pos_ --lr 0.015 --caseless --fine_tune --high_way --co_train
+python3 train_wc.py --train_file [training file 1] [training file 2] ... [training file N] \
+                    --dev_file [developing file 1] [developing file 2] ... [developing file N] \
+                    --test_file [testing file 1] [testing file 2] ... [testing file N] \
+                    --caseless --fine_tune --emb_file [embedding file] --shrink_embedding --word_dim 200
 ```
 
-- Noun Phrase (NP) Chunking:
-```
-python train_wc.py --train_file ./data/np/train.txt.iobes --dev_file ./data/np/testa.txt.iobes --test_file ./data/np/testb.txt.iobes --checkpoint ./checkpoint/np_ --caseless --fine_tune --high_way --co_train --least_iters 100
-```
+Users may incorporate an arbitrary number of corpora into the training process. In each epoch, our model randomly select one dataset i. We use training set i to learn the parameters and developing set i to evaluate the performance. If the current model achieves the best performance for dataset i on the developing set, we will then calculate the precision, recall and F1 on testing set i.
 
-For other datasets or tasks, you may wanna try different stopping parameters, especially, for smaller dataset, you may want to set ```least_iters``` to a larger value; and for some tasks, if the speed of loss decreasing is too slow, you may want to increase ```lr```.
+Users can also refer to ```run_lm-lstm-crf.sh``` (single-task model) and ```run_lm-lstm-crf5.sh``` (multi-task model for the 5 datasets mentioned above) for detailed usage.
 
 ## Benchmarks
 
