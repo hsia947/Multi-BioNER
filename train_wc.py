@@ -314,20 +314,20 @@ if __name__ == "__main__":
                     with open('output'+str(file_no)+'.txt', 'w') as fout:
                         predictor.output_batch(ner_model, test_word[file_no], fout, file_no)
 
-                # try:
-                #     utils.save_checkpoint({
-                #         'epoch': args.start_epoch,
-                #         'state_dict': ner_model.state_dict(),
-                #         'optimizer': optimizer.state_dict(),
-                #         'f_map': f_map,
-                #         'l_map': l_map,
-                #         'c_map': c_map,
-                #         'in_doc_words': in_doc_words
-                #     }, {'track_list': track_list,
-                #         'args': vars(args)
-                #         }, args.checkpoint + 'cwlm_lstm_crf')
-                # except Exception as inst:
-                #     print(inst)
+                try:
+                    utils.save_checkpoint({
+                        'epoch': args.start_epoch,
+                        'state_dict': ner_model.state_dict(),
+                        'optimizer': optimizer.state_dict(),
+                        'f_map': f_map,
+                        'l_map': l_map,
+                        'c_map': char_map,
+                        'in_doc_words': in_doc_words
+                    }, {'track_list': track_list,
+                        'args': vars(args)
+                        }, args.checkpoint + 'cwlm_lstm_crf')
+                except Exception as inst:
+                    print(inst)
 
             else:
                 patience_count += 1
