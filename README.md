@@ -74,8 +74,6 @@ of	O
 drug	O
 withdrawal	O
 .	O
-
-
 ```
 
 ## Usage
@@ -109,7 +107,7 @@ Here we compare our model with recent state-of-the-art models on the five datase
 | Dataset Benchmark | 87.21 | 87.39 | 86.76 | 82.90 | 72.55 |
 | [Crichton et al. 2016](https://github.com/cambridgeltl/MTL-Bioinformatics-2016) | 84.41 | 83.02 | 83.90 | 80.37 | 70.09 |
 | [Lample et al. 2016](https://github.com/glample/tagger) | 86.53 | 86.62 | 86.61 | 84.64 | 73.48 |
-| [Ma et al. 2016](https://github.com/XuezheMax/LasagneNLP) | 85.27 | 86.43 | 83.24 | 84.04 | 74.40 |
+| [Ma and Hovy 2016](https://github.com/XuezheMax/LasagneNLP) | 85.27 | 86.43 | 83.24 | 84.04 | 74.40 |
 | [Liu et al. 2018](https://github.com/LiyuanLucasLiu/LM-LSTM-CRF) | 87.82 | 87.01 | 85.18 | 85.10 | 74.69 |
 | Our Model | **89.06** | **88.50** | **87.18** | **86.08** | **75.04** |
 
