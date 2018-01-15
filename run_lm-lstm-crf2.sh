@@ -1,4 +1,0 @@
-python3 train_wc.py --train_file /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/NCBI-disease-IOBES/train.tsv /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/JNLPBA-IOBES/train.tsv \
-                    --dev_file /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/NCBI-disease-IOBES/devel.tsv /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/JNLPBA-IOBES/devel.tsv \
-                    --test_file /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/NCBI-disease-IOBES/test.tsv /shared/data/xuan/bioner/LSTM/data/MTL-Bioinformatics-2016/data/JNLPBA-IOBES/test.tsv \
-                    --caseless --fine_tune --emb_file /shared/data/xuan/bioner/LSTM/data/PubMed-and-PMC-w2v.txt --word_dim 200 --gpu 2 --shrink_embedding --patience 12 --epoch 300

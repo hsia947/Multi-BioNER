@@ -1,0 +1,1 @@
+python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point checkpoint/cwlm_lstm_crf.model --gpu 3 --input_file ./test.tsv --output_file output.txt
