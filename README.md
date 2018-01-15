@@ -118,45 +118,87 @@ Here we compare our model with recent state-of-the-art models on the five datase
 
 To annotated raw text, ```seq_wc.py``` is provided to annotate un-annotated text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
 ```
-python seq_wc.py --load_arg checkpoint/ner/ner_4_cwlm_lstm_crf.json --load_check_point checkpoint/ner_ner_4_cwlm_lstm_crf.model --gpu 0 --input_file ./data/ner2003/test.txt --output_file output.txt
+python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point checkpoint/cwlm_lstm_crf.model --input_file test.tsv --output_file output.txt
 ```
 
+Users may also refer to ```annotate.sh``` for detailed usage.
 The input format is similar to CoNLL, but each line is required to only contain one field, token. For example, an input file could be:
 
 ```
--DOCSTART-
-
-But
-China
-saw
-their
-luck
-desert
-them
-in
+In
 the
-second
-match
+absence
 of
-the
-group
+shock
 ,
-crashing
+sepsis
+,
+or
+other
+identifiable
+causes
+of
+lactic
+acidosis
+,
+the
+severe
+anemia
+(
+hemoglobin
+1
+.
+2
+g
+/
+dl
+)
+appeared
 to
-a
-surprise
-2-0
-defeat
-to
-newcomers
-Uzbekistan
+be
+the
+primary
+etiologic
+factor
 .
 ```
 and the corresponding output is:
 
 ```
--DOCSTART- -DOCSTART- -DOCSTART-
-
-But <LOC> China </LOC> saw their luck desert them in the second match of the group , crashing to a surprise 2-0 defeat to newcomers <LOC> Uzbekistan </LOC> . 
-
+In O
+the O
+absence O
+of O
+shock O
+, O
+sepsis O
+, O
+or O
+other O
+identifiable O
+causes O
+of O
+lactic O
+acidosis O
+, O
+the O
+severe O
+anemia O
+( O
+hemoglobin B-GENE
+1 I-GENE
+. I-GENE
+2 I-GENE
+g I-GENE
+/ I-GENE
+dl E-GENE
+) O
+appeared O
+to O
+be O
+the O
+primary O
+etiologic O
+factor O
+. O 
 ```
