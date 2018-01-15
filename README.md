@@ -78,11 +78,10 @@ withdrawal	O
 
 ## Usage
 
-```train_wc.py``` and ```eval_wc.py``` are scripts for our multi-task LSTM-CRF model.
-The usages of these scripts can be accessed by the parameter ````-h````, i.e., 
+```train_wc.py``` is the script for our multi-task LSTM-CRF model.
+The usages of it can be accessed by the parameter ````-h````, i.e., 
 ```
 python train_wc.py -h
-python eval_wc.py -h
 ```
 
 The default running commands are:
@@ -113,8 +112,15 @@ Here we compare our model with recent state-of-the-art models on the five datase
 
 
 ## Prediction
+Our ```train_wc.py``` provides an option to directly output the annotation results during the training process by the parameter ````--output_annotation````, i.e.,
+```
+python3 train_wc.py --train_file [training file 1] [training file 2] ... [training file N] \
+                    --dev_file [developing file 1] [developing file 2] ... [developing file N] \
+                    --test_file [testing file 1] [testing file 2] ... [testing file N] \
+                    --caseless --fine_tune --emb_file [embedding file] --shrink_embedding --output_annotation --word_dim 200
+```
 
-To annotated raw text, ```seq_wc.py``` is provided to annotate un-annotated text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
+If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
 ```
 python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point checkpoint/cwlm_lstm_crf.model --input_file test.tsv --output_file output.txt
 ```
