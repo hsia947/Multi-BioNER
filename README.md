@@ -2,8 +2,7 @@
 
 This project provides a neural network based multi-task learning framework for biomedical named entity recognition (BioNER).
 
-The implementation is based on the PyTorch library. Our model collectively trains different biomedical entity types to build a unified model that benefits the training of each single entity type and achieves a significantly better performance compared with the state-of-
-the-art BioNER systems.
+The implementation is based on the PyTorch library. Our model collectively trains different biomedical entity types to build a unified model that benefits the training of each single entity type and achieves a significantly better performance compared with the state-of-the-art BioNER systems.
 
 ## Quick Links
 
@@ -30,10 +29,15 @@ pip3 install -r requirements.txt
 
 ## Data
 
-We mainly focus on the CoNLL 2003 NER dataset, and the code takes its original format as input. 
-However, due to the license issue, we are restricted to distribute this dataset.
-You should be able to get it [here](http://aclweb.org/anthology/W03-0419).
-You may also want to search online (e.g., Github), someone might release it accidentally.
+We use five biomedical corpus collected by Crichton et al. for biomedical NER. The dataset is publicly available and can be downloaded from [here](https://github.com/cambridgeltl/MTL-Bioinformatics-2016). The details of each dataset are listed below:
+
+|Dataset | Entity Type | Dataset Size |
+| ------------- |-------------| -----|
+| [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | Gene/Protein | 20000 sentences |
+| [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | Chemical | 20000 sentences |
+| [BC5CDR](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC5CDR-IOBES) | Chemical, Disease | 20000 sentences |
+| [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 20000 sentences |
+| [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 20000 sentences |
 
 ### Format
 
