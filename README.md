@@ -133,7 +133,6 @@ python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point ch
 ```
 The annotation results will be in ```./annotate/```.
 
-Users may also refer to ```annotate.sh``` for detailed usage.
 The input format is similar to CoNLL, but each line is required to only contain one field, token. For example, an input file could be:
 
 ```
