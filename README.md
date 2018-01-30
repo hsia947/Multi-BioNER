@@ -1,4 +1,4 @@
-# Cross-type Biomedical Name Tagger with Deep Multi-task Learning
+# Cross-type Biomedical Named Entity Recognition with Deep Multi-task Learning
 
 This project provides a neural network based multi-task learning framework for biomedical named entity recognition (BioNER).
 
