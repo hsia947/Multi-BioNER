@@ -39,6 +39,9 @@ We use five biomedical corpora collected by Crichton et al. for biomedical NER. 
 | [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 793 abstracts |
 | [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
+In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-
+ChemdNER)) also followed this way.
+
 ### Format
 
 Users may want to use other datasets. We assume the corpus is formatted as same as the CoNLL 2003 NER dataset.
