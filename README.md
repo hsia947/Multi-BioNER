@@ -115,7 +115,7 @@ Here we compare our model with recent state-of-the-art models on the five datase
 | Dataset Benchmark | - | 88.06 | 86.76 | 82.90 | 72.55 |
 | [Crichton et al. 2016](https://github.com/cambridgeltl/MTL-Bioinformatics-2016) | 73.17 | 83.02 | 83.90 | 80.37 | 70.09 |
 | [Lample et al. 2016](https://github.com/glample/tagger) | 80.51 | 87.74 | 86.92 | 85.80 | 73.48 |
-| [Ma and Hovy 2016](https://github.com/XuezheMax/LasagneNLP) | 78.48 | 86.84 | 86.65 | 82.62 | 73.40 |
+| [Ma and Hovy 2016](https://github.com/XuezheMax/LasagneNLP) | 78.48 | 86.84 | 86.65 | 82.62 | 72.68 |
 | [Liu et al. 2018](https://github.com/LiyuanLucasLiu/LM-LSTM-CRF) | 80.00 | 88.75 | 86.96 | 83.92 | 72.17 |
 | Our Model | **80.74** | **89.37** | **88.78** | **86.14** | **73.52** |
 
