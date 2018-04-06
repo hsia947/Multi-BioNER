@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 
 We use five biomedical corpora collected by Crichton et al. for biomedical NER. The dataset is publicly available and can be downloaded from [here](https://github.com/cambridgeltl/MTL-Bioinformatics-2016). The details of each dataset are listed below:
 
-|Dataset | Entity Type | Dataset Size |
+|Dataset | Entity Type | Dataset Size | 
 | ------------- |-------------| -----|
 | [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | Gene/Protein | 20,000 sentences |
 | [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | Chemical | 10,000 abstracts |
@@ -39,7 +39,8 @@ We use five biomedical corpora collected by Crichton et al. for biomedical NER. 
 | [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 793 abstracts |
 | [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
-In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER)) also followed this way.
+### Note
+**In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER)) also preprocessed data in this way. If you want to reproduce our results, please also follow this way.**
 
 ### Format
 
