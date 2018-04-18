@@ -129,9 +129,7 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
                     --caseless --fine_tune --emb_file [embedding file] --shrink_embedding --output_annotation --word_dim 200 --gpu 0
 ```
 
-If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. We have released our pretrained model. You can download the [Arg](https://drive.google.com/open?id=1gzFV0m7UiqivAp9RMIFV9IX4OenU2jvZ) file and the [Model](https://drive.google.com/open?id=1Qp5ClninZ0GXsrA1PVuNJmk4tBDQrKdA) file and put them in ```./checkpoint/```.
-
-Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
+If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
 ```
 python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point checkpoint/cwlm_lstm_crf.model --input_file test.tsv --output_file annotate/output --gpu 0
 ```
