@@ -81,7 +81,7 @@ withdrawal	O
 ### Embedding
 We initialize the word embedding matrix with pre-trained word vectors from Pyysalo et al., 2013. These word vectors are
 trained using the skip-gram model on the PubMed abstracts together with all the full-text articles
-from PubMed Central (PMC) and a Wiikipedia dump. You can download the embedding files from [here](http://evexdb.org/pmresources/vec-space-models/). 
+from PubMed Central (PMC) and a Wikipedia dump. You can download the embedding files from [here](http://evexdb.org/pmresources/vec-space-models/). 
 
 Please do not forget to [convert](https://github.com/anotheremily/bin2txt) the .bin file to a .txt file.
 
@@ -102,7 +102,7 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
                     --caseless --fine_tune --emb_file [embedding file] --shrink_embedding --word_dim 200
 ```
 
-Users may incorporate an arbitrary number of corpora into the training process. In each epoch, our model randomly select one dataset i. We use training set i to learn the parameters and developing set i to evaluate the performance. If the current model achieves the best performance for dataset i on the developing set, we will then calculate the precision, recall and F1 on testing set i.
+Users may incorporate an arbitrary number of corpora into the training process. In each epoch, our model randomly selects one dataset _i_. We use training set _i_ to learn the parameters and developing set _i_ to evaluate the performance. If the current model achieves the best performance for dataset _i_ on the developing set, we will then calculate the precision, recall and F1 on testing set _i_.
 
 Users can also refer to ```run_lm-lstm-crf.sh``` (single-task model) and ```run_lm-lstm-crf5.sh``` (multi-task model for the 5 datasets mentioned above) for detailed usage.
 
