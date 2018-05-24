@@ -40,7 +40,8 @@ We use five biomedical corpora collected by Crichton et al. for biomedical NER. 
 | [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
 ### Note
-**In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER)) also preprocessed data in this way. If you want to reproduce our results, please also follow this way.**
+**In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER), [Lu et al., Journal  of
+cheminformatics 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4331694/pdf/1758-2946-7-S1-S4.pdf) and [Leaman and Lu, Bioinformatics 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5018376/pdf/btw343.pdf)) also preprocessed data in this way. If you want to reproduce our results, please also follow this way.**
 
 ### Format
 
