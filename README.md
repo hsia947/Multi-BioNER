@@ -134,7 +134,10 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
                     --caseless --fine_tune --emb_file [embedding file] --shrink_embedding --output_annotation --word_dim 200 --gpu 0
 ```
 
-If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. **We have released our pretrained model. You can download the [Arg](https://drive.google.com/file/d/1NouTmOIAmudBe20Wr2LLCBTCcaUiDci_/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1GU4zE_Hns6l-zvYZ6I8KMAhJSIGz7f_A/view?usp=sharing) file and put them in ```./checkpoint/```.**
+If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. 
+
+### Pre-trained Model
+**We have released our pre-trained model. You can download the [Arg](https://drive.google.com/file/d/1NouTmOIAmudBe20Wr2LLCBTCcaUiDci_/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1GU4zE_Hns6l-zvYZ6I8KMAhJSIGz7f_A/view?usp=sharing) file and put them in ```./checkpoint/```.**
 
 Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command 
 ```
@@ -146,25 +149,9 @@ python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point ch
 ```
 The annotation results will be in ```./annotate/```.
 
-The input format is similar to CoNLL, but each line is required to only contain one field, token. For example, an input file could be:
-
+The input format is similar to CoNLL, but each line is required to contain only one field, token. For example, an input file could be:
 ```
-In
-the
-absence
-of
-shock
-,
-sepsis
-,
-or
-other
-identifiable
-causes
-of
-lactic
-acidosis
-,
+T
 the
 severe
 anemia
@@ -189,23 +176,7 @@ factor
 and the corresponding output is:
 
 ```
-In O
-the O
-absence O
-of O
-shock O
-, O
-sepsis O
-, O
-or O
-other O
-identifiable O
-causes O
-of O
-lactic O
-acidosis O
-, O
-the O
+The O
 severe O
 anemia O
 ( O
