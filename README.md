@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 
 ## Quick Start
 
-To reproduce the results in our [paper](https://arxiv.org/abs/1801.09851), you can first download the corpora and the embedding file from **[here](https://drive.google.com/file/d/1tWQjxY2cPWRTbwra4YA4rHG-xRJH_DFc/view?usp=sharing)**, unzip the folder ```data_bioner_5/``` and put it under the main folder ```./```. Then users can use the running script to run the model.
+To reproduce the results in our [paper](https://arxiv.org/abs/1801.09851), you can first download the corpora and the embedding file from **[here](https://drive.google.com/file/d/1tWQjxY2cPWRTbwra4YA4rHG-xRJH_DFc/view?usp=sharing)**, unzip the folder ```data_bioner_5/``` and put it under the main folder ```./```. Then the following running script can be used to run the model.
 ```
 ./run_lm-lstm-crf5.sh
 ```
