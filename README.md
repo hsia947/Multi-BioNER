@@ -60,7 +60,6 @@ More specifically, **empty lines** are used as separators between sentences, and
 -DOCSTART- -X- -X- -X- O
 ```
 Other lines contains words, labels and other fields. **Word** must be the **first** field, **label** mush be the **last**. For example,
-
 ```
 -DOCSTART- -X- -X- -X- O
 
@@ -101,7 +100,6 @@ python train_wc.py -h
 ```
 
 The default running commands are:
-
 ```
 python3 train_wc.py --train_file [training file 1] [training file 2] ... [training file N] \
                     --dev_file [developing file 1] [developing file 2] ... [developing file N] \
@@ -136,7 +134,7 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
 
 If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. 
 
-### Pre-trained Model
+#### Pre-trained Model
 **We have released our pre-trained model. You can download the [Arg](https://drive.google.com/file/d/1NouTmOIAmudBe20Wr2LLCBTCcaUiDci_/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1GU4zE_Hns6l-zvYZ6I8KMAhJSIGz7f_A/view?usp=sharing) file and put them in ```./checkpoint/```.**
 
 Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command 
@@ -174,7 +172,6 @@ factor
 .
 ```
 and the corresponding output is:
-
 ```
 The O
 severe O
