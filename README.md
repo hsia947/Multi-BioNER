@@ -7,7 +7,7 @@ The implementation is based on the PyTorch library. Our model collectively train
 ## Quick Links
 
 - [Installation](#installation)
-- [Quick Start](#quick start)
+- [Quick Start](#quick-start)
 - [Data](#data)
 - [Usage](#usage)
 - [Benchmarks](#benchmarks)
@@ -17,11 +17,11 @@ The implementation is based on the PyTorch library. Our model collectively train
 
 For training, a GPU is strongly recommended for speed. CPU is supported but training could be extremely slow.
 
-### PyTorch
+#### PyTorch
 
 The code is based on PyTorch. You can find installation instructions [here](http://pytorch.org/). 
 
-### Dependencies
+#### Dependencies
 
 The code is written in Python 3.6. Its dependencies are summarized in the file ```requirements.txt```. You can install these dependencies like this:
 ```
@@ -47,11 +47,11 @@ We use five biomedical corpora collected by Crichton et al. for biomedical NER. 
 | NCBI-disease | Disease | 793 abstracts |
 | JNLPBA | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
-### Note
+#### Note
 **In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER), [Lu et al., Journal  of
 cheminformatics 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4331694/pdf/1758-2946-7-S1-S4.pdf) and [Leaman and Lu, Bioinformatics 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5018376/pdf/btw343.pdf)) also preprocessed data in this way. If you want to reproduce our results, please also follow this way.**
 
-### Format
+#### Format
 
 Users may want to use other datasets. We assume the corpus is formatted as same as the CoNLL 2003 NER dataset.
 
@@ -87,7 +87,7 @@ withdrawal	O
 .	O
 ```
 
-### Embedding
+#### Embedding
 We initialize the word embedding matrix with pre-trained word vectors from Pyysalo et al., 2013. These word vectors are
 trained using the skip-gram model on the PubMed abstracts together with all the full-text articles
 from PubMed Central (PMC) and a Wikipedia dump. You can download the embedding files from [here](http://evexdb.org/pmresources/vec-space-models/).
