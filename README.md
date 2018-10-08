@@ -4,7 +4,7 @@ This project provides a neural network based multi-task learning framework for b
 
 The implementation is based on the PyTorch library. Our model collectively trains different biomedical entity types to build a unified model that benefits the training of each single entity type and achieves a significantly better performance compared with the state-of-the-art BioNER systems.
 
-## Quick Links
+## Links
 
 - [Installation](#installation)
 - [Quick Start](#quick-start)
