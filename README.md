@@ -149,8 +149,7 @@ The annotation results will be in ```./annotate/```.
 
 The input format is similar to CoNLL, but each line is required to contain only one field, token. For example, an input file could be:
 ```
-T
-the
+The
 severe
 anemia
 (
