@@ -7,6 +7,7 @@ The implementation is based on the PyTorch library. Our model collectively train
 ## Quick Links
 
 - [Installation](#installation)
+- [Quick Start](#quick start)
 - [Data](#data)
 - [Usage](#usage)
 - [Benchmarks](#benchmarks)
@@ -27,17 +28,24 @@ The code is written in Python 3.6. Its dependencies are summarized in the file `
 pip3 install -r requirements.txt
 ```
 
+## Quick Start
+
+To reproduce the results in our [paper](https://arxiv.org/abs/1801.09851), you can first download the corpora and the embedding file from **[here]()**, unzip the folder ```data_bioner_5/``` and put it under the main folder ```./```. Then users can use the running script to run the model.
+```
+./run_lm-lstm-crf5.sh
+```
+
 ## Data
 
 We use five biomedical corpora collected by Crichton et al. for biomedical NER. The dataset is publicly available and can be downloaded from [here](https://github.com/cambridgeltl/MTL-Bioinformatics-2016). The details of each dataset are listed below:
 
 |Dataset | Entity Type | Dataset Size | 
 | ------------- |-------------| -----|
-| [BC2GM](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC2GM-IOBES) | Gene/Protein | 20,000 sentences |
-| [BC4CHEMD](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC4CHEMD-IOBES) | Chemical | 10,000 abstracts |
-| [BC5CDR](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/BC5CDR-IOBES) | Chemical, Disease | 1,500 articles |
-| [NCBI-disease](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/NCBI-disease-IOBES) | Disease | 793 abstracts |
-| [JNLPBA](https://github.com/cambridgeltl/MTL-Bioinformatics-2016/tree/master/data/JNLPBA-IOBES) | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
+| BC2GM | Gene/Protein | 20,000 sentences |
+| BC4CHEMD | Chemical | 10,000 abstracts |
+| BC5CDR | Chemical, Disease | 1,500 articles |
+| NCBI-disease | Disease | 793 abstracts |
+| JNLPBA | Gene/Protein, DNA, Cell Type, Cell Line, RNA | 2,404 abstracts |
 
 ### Note
 **In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER), [Lu et al., Journal  of
@@ -51,7 +59,7 @@ More specifically, **empty lines** are used as separators between sentences, and
 ```
 -DOCSTART- -X- -X- -X- O
 ```
-Other lines contains words, labels and other fields. **Word** must be the **first** field, **label** mush be the **last**, and these fields are **separated by space**. For example,
+Other lines contains words, labels and other fields. **Word** must be the **first** field, **label** mush be the **last**. For example,
 
 ```
 -DOCSTART- -X- -X- -X- O
@@ -82,14 +90,12 @@ withdrawal	O
 ### Embedding
 We initialize the word embedding matrix with pre-trained word vectors from Pyysalo et al., 2013. These word vectors are
 trained using the skip-gram model on the PubMed abstracts together with all the full-text articles
-from PubMed Central (PMC) and a Wikipedia dump. You can download the embedding files from [here](http://evexdb.org/pmresources/vec-space-models/). 
-
-Please do not forget to [convert](https://github.com/anotheremily/bin2txt) the .bin file to a .txt file.
+from PubMed Central (PMC) and a Wikipedia dump. You can download the embedding files from [here](http://evexdb.org/pmresources/vec-space-models/).
 
 ## Usage
 
 ```train_wc.py``` is the script for our multi-task LSTM-CRF model.
-The usages of it can be accessed by the parameter ````-h````, i.e., 
+The usages of it can be accessed by
 ```
 python train_wc.py -h
 ```
@@ -104,8 +110,6 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
 ```
 
 Users may incorporate an arbitrary number of corpora into the training process. In each epoch, our model randomly selects one dataset _i_. We use training set _i_ to learn the parameters and developing set _i_ to evaluate the performance. If the current model achieves the best performance for dataset _i_ on the developing set, we will then calculate the precision, recall and F1 on testing set _i_.
-
-Users can also refer to ```run_lm-lstm-crf.sh``` (single-task model) and ```run_lm-lstm-crf5.sh``` (multi-task model for the 5 datasets mentioned above) for detailed usage.
 
 ## Benchmarks
 
@@ -132,7 +136,11 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
 
 If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. **We have released our pretrained model. You can download the [Arg](https://drive.google.com/file/d/1NouTmOIAmudBe20Wr2LLCBTCcaUiDci_/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1GU4zE_Hns6l-zvYZ6I8KMAhJSIGz7f_A/view?usp=sharing) file and put them in ```./checkpoint/```.**
 
-Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command ````python seq_wc.py -h````, and a running command example is provided below:
+Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command 
+```
+python seq_wc.py -h
+```
+and a running command example is provided below:
 ```
 python3 seq_wc.py --load_arg checkpoint/cwlm_lstm_crf.json --load_check_point checkpoint/cwlm_lstm_crf.model --input_file test.tsv --output_file annotate/output --gpu 0
 ```
@@ -217,4 +225,15 @@ primary O
 etiologic O
 factor O
 . O 
+```
+
+## Citation
+If you find the implementation useful, please cite the following paper:
+```
+@article{wang2018cross,
+  title={Cross-type Biomedical Named Entity Recognition with Deep Multi-Task Learning},
+  author={Wang, Xuan and Zhang, Yu and Ren, Xiang and Zhang, Yuhao and Zitnik, Marinka and Shang, Jingbo and Langlotz, Curtis and Han, Jiawei},
+  journal={arXiv preprint arXiv:1801.09851},
+  year={2018}
+}
 ```
