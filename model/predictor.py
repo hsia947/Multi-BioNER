@@ -128,7 +128,7 @@ class predict:
         d_len = len(documents)
         for d_ind in tqdm( range(0, d_len), mininterval=1,
                 desc=' - Process', leave=False, file=sys.stdout):
-            fout.write('-DOCSTART- -DOCSTART- -DOCSTART-\n\n')
+            # fout.write('-DOCSTART- -DOCSTART- -DOCSTART-\n\n')
             features = documents[d_ind]
             f_len = len(features)
             for ind in range(0, f_len, self.batch_size):
@@ -139,7 +139,7 @@ class predict:
                 for ind2 in range(ind, eind):
                     f = features[ind2]
                     l = labels[ind2 - ind][0: len(f) ]
-                    fout.write(self.decode_str(features[ind2], l) + '\n\n')
+                    fout.write(self.decode_str(features[ind2], l) + '\n')
 
     def apply_model(self, ner_model, features):
         """

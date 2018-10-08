@@ -28,7 +28,7 @@ if __name__ == "__main__":
     parser.add_argument('--batch_size', type=int, default=50, help='size of batch')
     parser.add_argument('--input_file', default='data/ner2003/test.txt', help='path to input un-annotated corpus')
     parser.add_argument('--output_file', default='annotate/output', help='path to output file')
-    parser.add_argument('--dataset_no',type=int, default=5, help='number of the datasets')
+    parser.add_argument('--dataset_no', type=int, default=5, help='number of the datasets')
     args = parser.parse_args()
 
 
@@ -78,9 +78,8 @@ if __name__ == "__main__":
 
     for idx in range(args.dataset_no):
         print('annotating the entity type', idx)
-        fout = open(args.output_file+str(idx)+'.txt', 'w')
-        for feature in features:
-            predictor.output_batch(ner_model, feature, fout, idx)
-            fout.write('\n')
-        fout.close()
+        with open(args.output_file+str(idx)+'.txt', 'w') as fout:
+            for feature in features:
+                predictor.output_batch(ner_model, feature, fout, idx)
+                fout.write('\n')
 	        
