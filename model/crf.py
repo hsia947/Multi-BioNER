@@ -305,8 +305,10 @@ class CRFLoss_vb(nn.Module):
             cur_values = cur_values + partition.contiguous().view(bat_size, self.tagset_size, 1).expand(bat_size, self.tagset_size, self.tagset_size)
             cur_partition = utils.log_sum_exp(cur_values, self.tagset_size)
                   # (bat_size * from_target * to_target) -> (bat_size * to_target)
-            partition = utils.switch(partition, cur_partition,
-                                     mask[idx].contiguous().view(bat_size, 1).expand(bat_size, self.tagset_size)).contiguous().view(bat_size, -1)
+            
+            partition = utils.switch(partition, cur_partition, mask[idx].view(bat_size, 1).expand(bat_size, self.tagset_size)).view(bat_size, -1)
+            # partition = utils.switch(partition, cur_partition,
+            #                          mask[idx].contiguous().view(bat_size, 1).expand(bat_size, self.tagset_size)).contiguous().view(bat_size, -1)
             # the following two may achieve higher speed, but raise run-time error
             # new_partition = partition.clone()
             # new_partition.masked_scatter_(mask[idx].view(-1, 1).expand(bat_size, self.tagset_size), cur_partition)  #0 for partition, 1 for cur_partition
