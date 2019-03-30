@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 
 ## Quick Start
 
-To reproduce the results in our [paper](https://arxiv.org/abs/1801.09851), you can first download the corpora and the embedding file from **[here](https://drive.google.com/file/d/1tWQjxY2cPWRTbwra4YA4rHG-xRJH_DFc/view?usp=sharing)**, unzip the folder ```data_bioner_5/``` and put it under the main folder ```./```. Then the following running script can be used to run the model.
+To reproduce the results in our [paper](https://arxiv.org/abs/1801.09851), you can first download the corpora and the embedding file from **[here](https://drive.google.com/file/d/1JHQJ9DKaEeSGZdA0Nmz9KCdtjUoJKXCb/view?usp=sharing)**, unzip the folder ```data_bioner_5/``` and put it under the main folder ```./```. Then the following running script can be used to run the model.
 ```
 ./run_lm-lstm-crf5.sh
 ```
@@ -49,7 +49,7 @@ We use five biomedical corpora collected by Crichton et al. for biomedical NER. 
 
 #### Note
 **In our paper, we merge the original training set and development set to be the new training set, as many teams did in the challenge. Some previous work (e.g., [Luo et al., Bioinformatics 2017](https://github.com/lingluodlut/Att-ChemdNER), [Lu et al., Journal  of
-cheminformatics 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4331694/pdf/1758-2946-7-S1-S4.pdf) and [Leaman and Lu, Bioinformatics 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5018376/pdf/btw343.pdf)) also preprocessed data in this way. If you want to reproduce our results, please also follow this way.**
+cheminformatics 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4331694/pdf/1758-2946-7-S1-S4.pdf) and [Leaman and Lu, Bioinformatics 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5018376/pdf/btw343.pdf)) also preprocessed data in this way. If you want to reproduce our results, please follow the same way.**
 
 #### Format
 
@@ -135,7 +135,7 @@ python3 train_wc.py --train_file [training file 1] [training file 2] ... [traini
 If users do not use ````--output_annotation````, the best performing model during the training process will be saved in ```./checkpoint/```. 
 
 #### Pre-trained Model
-**We have released our pre-trained model. You can download the [Arg](https://drive.google.com/file/d/1NouTmOIAmudBe20Wr2LLCBTCcaUiDci_/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1GU4zE_Hns6l-zvYZ6I8KMAhJSIGz7f_A/view?usp=sharing) file and put them in ```./checkpoint/```.**
+**We have released our pre-trained model. You can download the [Arg](https://drive.google.com/file/d/1CxW75H1NwnUCfnBVWQFdZD9TNbuayUAQ/view?usp=sharing) file and the [Model](https://drive.google.com/file/d/1aBoIUDzU6_DcB0c1Y1t0AoKmcVik0YO1/view?usp=sharing) file and put them in ```./checkpoint/```.**
 
 Using the saved model, ```seq_wc.py``` can be applied to annotate raw text. Its usage can be accessed by command 
 ```
