@@ -42,7 +42,7 @@ if __name__ == "__main__":
     parser.add_argument('--checkpoint', default='./checkpoint/', help='checkpoint path')
     parser.add_argument('--caseless', action='store_true', help='caseless or not')
     parser.add_argument('--char_dim', type=int, default=30, help='dimension of char embedding')
-    parser.add_argument('--word_dim', type=int, default=100, help='dimension of word embedding')
+    parser.add_argument('--word_dim', type=int, default=50, help='dimension of word embedding')
     parser.add_argument('--char_layers', type=int, default=1, help='number of char level layers')
     parser.add_argument('--word_layers', type=int, default=1, help='number of word level layers')
     parser.add_argument('--lr', type=float, default=0.01, help='initial learning rate')
@@ -81,16 +81,19 @@ if __name__ == "__main__":
     for i in range(file_num):
         with codecs.open(args.train_file[i], 'r', 'utf-8') as f:
             lines0 = f.readlines()
+            lines0 = lines0[0:1000]
+            #print (len(lines0))
         lines.append(lines0)
     for i in range(file_num):
         with codecs.open(args.dev_file[i], 'r', 'utf-8') as f:
             dev_lines0 = f.readlines()
+            dev_lines0 = dev_lines0[0:1000]
         dev_lines.append(dev_lines0)
     for i in range(file_num):
         with codecs.open(args.test_file[i], 'r', 'utf-8') as f:
             test_lines0 = f.readlines()
+            test_lines0 = test_lines0[0:1000]
         test_lines.append(test_lines0)
-
     dataset_loader = []
     dev_dataset_loader = []
     test_dataset_loader = []
@@ -168,8 +171,9 @@ if __name__ == "__main__":
             f_map = {'<eof>': 0}
         f_map, embedding_tensor, in_doc_words = utils.load_embedding_wlm(args.emb_file, ' ', f_map, dt_f_set, args.caseless, args.unk, args.word_dim, shrink_to_corpus=args.shrink_embedding)
         print("embedding size: '{}'".format(len(f_map)))
-
+    #print("l_set: " +str(len(l_set)))
     for label in l_set:
+        #print(label)
         if label not in l_map:
             l_map[label] = len(l_map)
 
@@ -179,7 +183,7 @@ if __name__ == "__main__":
         dataset, forw_corp, back_corp = utils.construct_bucket_mean_vb_wc(train_features[i], train_labels[i], l_map, char_map, f_map, args.caseless)
         dev_dataset, forw_dev, back_dev = utils.construct_bucket_mean_vb_wc(dev_features[i], dev_labels[i], l_map, char_map, f_map, args.caseless)
         test_dataset, forw_test, back_test = utils.construct_bucket_mean_vb_wc(test_features[i], test_labels[i], l_map, char_map, f_map, args.caseless)
-        
+        print(len(dataset))
         dataset_loader.append([torch.utils.data.DataLoader(tup, args.batch_size, shuffle=True, drop_last=False) for tup in dataset])
         dev_dataset_loader.append([torch.utils.data.DataLoader(tup, 50, shuffle=False, drop_last=False) for tup in dev_dataset])
         test_dataset_loader.append([torch.utils.data.DataLoader(tup, 50, shuffle=False, drop_last=False) for tup in test_dataset])
