@@ -40,7 +40,7 @@ class MultiBio(Ner):
         if self.args.gpu >= 0:
             torch.cuda.set_device(self.args.gpu)
         print('setting:')
-        #self.args.output_annotation = True
+        self.args.output_annotation = True
         self.args.caseless = True
         self.args.fine_tune = True
         self.args.shrink_embedding = True
@@ -54,18 +54,18 @@ class MultiBio(Ner):
         for i in range(self.file_num):
             with codecs.open(self.args.train_file[i], 'r', 'utf-8') as f:
                 lines0 = f.readlines()
-                #lines0 = lines0[0:2000]
+                lines0 = lines0[0:2000]
                 # print (len(lines0))
             self.lines.append(lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.dev_file[i], 'r', 'utf-8') as f:
                 dev_lines0 = f.readlines()
-                #dev_lines0 = dev_lines0[0:2000]
+                dev_lines0 = dev_lines0[0:2000]
             self.dev_lines.append(dev_lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.test_file[i], 'r', 'utf-8') as f:
                 test_lines0 = f.readlines()
-                #test_lines0 = test_lines0[0:2000]
+                test_lines0 = test_lines0[0:2000]
             self.test_lines.append(test_lines0)
 
         for i in range(self.file_num):

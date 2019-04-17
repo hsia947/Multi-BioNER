@@ -43,7 +43,7 @@ class predict:
             feature (list): words list
             label (list): label list
         """
-        return '\n'.join(map(lambda t: t[0] + ' '+ self.r_l_map[t[1]], zip(feature, label)))
+        return '\n'.join(map(lambda t: t[0] + ' '+ self.r_l_map[t[1]], list(zip(feature, label.tolist()))))
 
     def decode_s(self, feature, label):
         """
@@ -135,11 +135,10 @@ class predict:
                 eind = min(f_len, ind + self.batch_size)
                 labels = self.apply_model(ner_model, features[ind: eind], file_no)
                 labels = torch.unbind(labels, 1)
-
                 for ind2 in range(ind, eind):
                     f = features[ind2]
                     l = labels[ind2 - ind][0: len(f) ]
-                    print(self.decode_str(features[ind2], l) + '\n')
+                    #print(l)
                     fout.write(self.decode_str(features[ind2], l) + '\n')
 
     def apply_model(self, ner_model, features):
