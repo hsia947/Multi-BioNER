@@ -13,6 +13,7 @@ from model.predictor import predict_wc #NEW
 import random
 import sys
 import itertools
+from seq_wc import main
 
 class MultiBio(Ner):
     def __init__(self, parser):
@@ -34,10 +35,15 @@ class MultiBio(Ner):
         self.test_labels = []
         self.train_features_tot = []
         self.test_word = []
+        self.track_list = list()
         self.args = parser.parse_args()
         if self.args.gpu >= 0:
             torch.cuda.set_device(self.args.gpu)
         print('setting:')
+        #self.args.output_annotation = True
+        self.args.caseless = True
+        self.args.fine_tune = True
+        self.args.shrink_embedding = True
         print(self.args)
     def convert_ground_truth(self, data, *args, **kwargs):
         pass
@@ -48,18 +54,18 @@ class MultiBio(Ner):
         for i in range(self.file_num):
             with codecs.open(self.args.train_file[i], 'r', 'utf-8') as f:
                 lines0 = f.readlines()
-                lines0 = lines0[0:2000]
+                #lines0 = lines0[0:2000]
                 # print (len(lines0))
             self.lines.append(lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.dev_file[i], 'r', 'utf-8') as f:
                 dev_lines0 = f.readlines()
-                dev_lines0 = dev_lines0[0:2000]
+                #dev_lines0 = dev_lines0[0:2000]
             self.dev_lines.append(dev_lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.test_file[i], 'r', 'utf-8') as f:
                 test_lines0 = f.readlines()
-                test_lines0 = test_lines0[0:2000]
+                #test_lines0 = test_lines0[0:2000]
             self.test_lines.append(test_lines0)
 
         for i in range(self.file_num):
@@ -95,7 +101,7 @@ class MultiBio(Ner):
                                                                                                       if_shrink_w_feature=False)
             self.train_features.append(train_features0)
             self.train_labels.append(train_labels0)
-
+            #print(self.train_labels[0][0])
             self.train_features_tot += train_features0
 
         shrink_char_count = [k for (k, v) in iter(self.char_count.items()) if v >= self.args.mini_count]
@@ -108,7 +114,6 @@ class MultiBio(Ner):
         f_set = {v for v in self.f_map}
         dt_f_set = f_set
         self.f_map = utils.shrink_features(self.f_map, self.train_features_tot, self.args.mini_count)
-
         l_set = set()
 
         for i in range(self.file_num):
@@ -165,7 +170,7 @@ class MultiBio(Ner):
         for i in range(self.file_num):
             best_rec.append(float('-inf'))
 
-        track_list = list()
+
         start_time = time.time()
         epoch_list = range(self.args.start_epoch, self.args.start_epoch + self.args.epoch)
         patience_count = 0
@@ -213,24 +218,22 @@ class MultiBio(Ner):
 
             # eval & save check_point
             if 'f' in self.args.eva_matrix:
-                dev_f1, dev_pre, dev_rec, dev_acc = self.evaluator.calc_score(self.ner_model, self.dev_dataset_loader[file_no],
+                dev_f1, dev_pre, dev_rec, dev_acc = self.evaluate(None, None, self.dev_dataset_loader[file_no],
                                                                          file_no)
-
+                print(dev_f1, dev_pre, dev_rec, dev_acc)
                 if dev_f1 > best_f1[file_no]:
                     patience_count = 0
                     best_f1[file_no] = dev_f1
                     best_pre[file_no] = dev_pre
                     best_rec[file_no] = dev_rec
 
-                    test_f1, test_pre, test_rec, test_acc = self.evaluator.calc_score(self.ner_model,
-                                                                                 self.test_dataset_loader[file_no], file_no)
-
-                    track_list.append(
+                    test_f1, test_pre, test_rec, test_acc = self.evaluate(None, None, self.test_dataset_loader[file_no], file_no)
+                    self.track_list.append(
                         {'loss': epoch_loss, 'dev_f1': dev_f1, 'dev_acc': dev_acc, 'test_f1': test_f1,
                          'test_acc': test_acc})
 
                     print(
-                        '(loss: %.4f, epoch: %d, dataset: %d, dev F1 = %.4f, dev pre = %.4f, dev rec = %.4f, F1 on test = %.4f, pre on test= %.4f, rec on test= %.4f), saving...' %
+                        '(loss: %.4f, epoch: %d, dataset: %d, dev F1 = %.4f, dev pre = %.4f, dev rec = %.4f, F1 on test = %.4f, pre on test= %.4f, rec on test= %.4f)' %
                         (epoch_loss,
                          self.args.start_epoch,
                          file_no,
@@ -240,24 +243,12 @@ class MultiBio(Ner):
                          test_f1,
                          test_pre,
                          test_rec))
-
+                    print(self.args.output_annotation)
                     if self.args.output_annotation:  # NEW
-                        print('annotating')
                         with open('output' + str(file_no) + '.txt', 'w') as fout:
-                            self.predictor.output_batch(self.ner_model, self.test_word[file_no], fout, file_no)
-
+                            self.predict(self.test_word[file_no], fout, file_no)
                     try:
-                        utils.save_checkpoint({
-                            'epoch': self.args.start_epoch,
-                            'state_dict': self.ner_model.state_dict(),
-                            'optimizer': self.optimizer.state_dict(),
-                            'f_map': self.f_map,
-                            'l_map': self.l_map,
-                            'c_map': self.char_map,
-                            'in_doc_words': self.in_doc_words
-                        }, {'track_list': track_list,
-                            'args': vars(args)
-                            }, self.args.checkpoint + 'cwlm_lstm_crf')
+                        self.save_model(None)
                     except Exception as inst:
                         print(inst)
 
@@ -270,7 +261,7 @@ class MultiBio(Ner):
                            dev_f1,
                            dev_pre,
                            dev_rec))
-                    track_list.append({'loss': epoch_loss, 'dev_f1': dev_f1, 'dev_acc': dev_acc})
+                    self.track_list.append({'loss': epoch_loss, 'dev_f1': dev_f1, 'dev_acc': dev_acc})
 
             print('epoch: ' + str(self.args.start_epoch) + '\t in ' + str(self.args.epoch) + ' take: ' + str(
                 time.time() - start_time) + ' s')
@@ -278,17 +269,36 @@ class MultiBio(Ner):
             if patience_count >= self.args.patience and self.args.start_epoch >= self.args.least_iters:
                 break
 
-    def predict(self, data, *args, **kwargs):
-        pass
+    def predict(self, data, fout, file_no, **kwargs):
+        """
+        :param data:
+        :param fout:
+        :param file_no:
+        :param kwargs:
+        :return:
+        """
+        print('annotating')
+        self.predictor.output_batch(self.ner_model, data, fout, file_no)
 
-    def evaluate(self, predictions, groundTruths, *args, **kwargs):
-        pass
+    def evaluate(self, predictions, groundTruths, dataset, file_no, **kwargs):
+        return self.evaluator.calc_score(self.ner_model, dataset, file_no)
 
     def save_model(self, file):
-        pass
+        print("saving model")
+        utils.save_checkpoint({
+            'epoch': self.args.start_epoch,
+            'state_dict': self.ner_model.state_dict(),
+            'optimizer': self.optimizer.state_dict(),
+            'f_map': self.f_map,
+            'l_map': self.l_map,
+            'c_map': self.char_map,
+            'in_doc_words': self.in_doc_words
+        }, {'track_list': self.track_list,
+            'args': vars(self.args)
+            }, self.args.checkpoint + 'cwlm_lstm_crf')
 
     def load_model(self, file):
-        pass
+        main()
 
     def build_model(self):
         print('building model')

@@ -125,7 +125,7 @@ class Ner(abc.ABC):
         :param file: From where to load the model - Optional function
         :return:
         """
-        pass
+        p
 
 
 """

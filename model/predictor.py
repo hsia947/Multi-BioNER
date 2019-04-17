@@ -139,6 +139,7 @@ class predict:
                 for ind2 in range(ind, eind):
                     f = features[ind2]
                     l = labels[ind2 - ind][0: len(f) ]
+                    print(self.decode_str(features[ind2], l) + '\n')
                     fout.write(self.decode_str(features[ind2], l) + '\n')
 
     def apply_model(self, ner_model, features):

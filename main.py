@@ -52,6 +52,7 @@ def main():
     model.read_dataset(None, None)
     model.build_model()
     model.train(None)
+    #model.load_model(None)
 
 
 
