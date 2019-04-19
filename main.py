@@ -53,13 +53,13 @@ def main(dataset_path):
 
     model = MultiBio(parser)
     model.read_dataset(None, None)
-    model.build_model()
-    model.train(None)
-    out_path = model.predict(None, None, None)
-    test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
-    print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
+    #model.build_model()
+    #model.train(None)
+    #out_path = model.predict(None, None, None)
+    #test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
+    #print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
 
-    #out_path = model.load_model(dataset_path)
+    out_path = model.load_model(dataset_path)
     return out_path
 
 

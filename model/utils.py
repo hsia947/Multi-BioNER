@@ -268,6 +268,34 @@ def read_features(lines): #NEW
         document_tags.append((feature_tags))
     return documents, document_tags
 
+def read_features2(lines): #NEW
+    """
+    convert un-annotated corpus into features
+    """
+    documents = list()
+    features = list()
+    tmp_fl = list()
+
+    for line in lines:
+        if_doc_end = (len(line) > 10 and line[0:10] == '-DOCSTART-')
+        if not (line.isspace() or if_doc_end):
+            tmp = line.rstrip().split()
+            tmp_fl.append(tmp[0])
+        else:
+            if len(tmp_fl) > 0:
+                features.append(tmp_fl)
+                tmp_fl = list()
+            if if_doc_end and len(features) > 0:
+                documents.append(features)
+                features = list()
+    if len(tmp_fl) > 0:
+        features.append(tmp_fl)
+
+    if len(features) >0:
+        documents.append(features)
+
+    return documents
+
 def shrink_embedding(feature_map, word_dict, word_embedding, caseless):
     """
     shrink embedding dictionary to in-doc words only

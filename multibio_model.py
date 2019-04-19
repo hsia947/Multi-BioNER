@@ -352,7 +352,7 @@ class MultiBio(Ner):
                 #if i == 2000:
                    # break
                 if line == '\n':
-                    features.append(utils.read_features(lines))
+                    features.append(utils.read_features2(lines))
                     feature_tags.append(tags)
                     tags = []
                     lines = []
