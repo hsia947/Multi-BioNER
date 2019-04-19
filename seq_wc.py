@@ -10,7 +10,7 @@ from model.crf import *
 from model.lm_lstm_crf import *
 import model.utils as utils
 from model.predictor import predict_wc
-
+from model.evaluator import eval_wc
 import argparse
 import json
 import os
@@ -20,7 +20,7 @@ import itertools
 import functools
 
 
-def main():
+def load_pretrain_model(file_path):
     print("CSCI548 model loading")
     parser = argparse.ArgumentParser(description='Evaluating LM-BLSTM-CRF')
     parser.add_argument('--load_arg', default='./checkpoint/cwlm_lstm_crf.json', help='path to arg json')
@@ -30,7 +30,7 @@ def main():
     parser.add_argument('--decode_type', choices=['label', 'string'], default='label',
                         help='type of decode function, set `label` to couple label with text, or set `string` to insert label into test')
     parser.add_argument('--batch_size', type=int, default=50, help='size of batch')
-    parser.add_argument('--input_file', default='data_bioner_5/BC2GM-IOBES/test.tsv', help='path to input un-annotated corpus')
+    parser.add_argument('--input_file', default=file_path+"/test.tsv", help='path to input un-annotated corpus')
     parser.add_argument('--output_file', default='annotate/output', help='path to output file')
     parser.add_argument('--dataset_no', type=int, default=1, help='number of the datasets')
     args = parser.parse_args()
@@ -69,13 +69,16 @@ def main():
     decode_label = (args.decode_type == 'label')
     predictor = predict_wc(if_cuda, f_map, c_map, l_map, f_map['<eof>'], c_map['\n'], l_map['<pad>'], l_map['<start>'],
                            decode_label, args.batch_size, jd['caseless'])
+    evaluator = eval_wc(packer, l_map, args.eva_matrix)
 
     # loading corpus
     print('loading corpus')
     lines = []
     features = []
     with codecs.open(args.input_file, 'r', 'utf-8') as f:
-        for line in f:
+        for i, line in enumerate(f):
+            if i == 2000:
+                break
             if line == '\n':
                 features.append(utils.read_features(lines))
                 lines = []
@@ -90,6 +93,4 @@ def main():
                 predictor.output_batch(ner_model, feature, fout, idx)
                 fout.write('\n')
 
-
-if __name__ == "__main__":
-    main()
+    return args.output_file + str(idx) + '.txt'

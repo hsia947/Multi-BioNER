@@ -3,15 +3,15 @@ import argparse
 from multibio_model import MultiBio
 
 
-def main():
+def main(dataset_path):
     parser = argparse.ArgumentParser(description='Learning with LM-LSTM-CRF together with Language Model')
     parser.add_argument('--rand_embedding', action='store_true', help='random initialize word embedding')
     parser.add_argument('--emb_file', default='data_bioner_5/source.txt', help='path to pre-trained embedding')
-    parser.add_argument('--train_file', nargs='+', default=["data_bioner_5/BC2GM-IOBES/merge.tsv"],
+    parser.add_argument('--train_file', nargs='+', default=[dataset_path+"/merge.tsv"],
                         help='path to training file')
-    parser.add_argument('--dev_file', nargs='+', default=["data_bioner_5/BC2GM-IOBES/devel.tsv"],
+    parser.add_argument('--dev_file', nargs='+', default=[dataset_path+"/devel.tsv"],
                         help='path to development file')
-    parser.add_argument('--test_file', nargs='+', default=["data_bioner_5/BC2GM-IOBES/test.tsv"],
+    parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test.tsv"],
                         help='path to test file')
     parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
     parser.add_argument('--batch_size', type=int, default=10, help='batch_size')
@@ -48,13 +48,21 @@ def main():
     parser.add_argument('--shrink_embedding', action='store_true',
                         help='shrink the embedding dictionary to corpus (open this if pre-trained embedding dictionary is too large, but disable this may yield better results on external corpus)')
     parser.add_argument('--output_annotation', action='store_true', help='output annotation results or not')
+    parser.add_argument('--output_file', default='annotate/output', help='path to output file')
+
+
     model = MultiBio(parser)
     model.read_dataset(None, None)
     model.build_model()
     model.train(None)
-    #model.load_model(None)
+    out_path = model.predict(None, None, None)
+    test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
+    print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
 
+    #out_path = model.load_model(dataset_path)
+    return out_path
 
 
 if __name__ == "__main__":
-    main()
+    out_path = main("data_bioner_5\BC2GM-IOBES")
+    print(out_path)

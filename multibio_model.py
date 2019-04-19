@@ -1,3 +1,4 @@
+import argparse
 import os
 import functools
 import time
@@ -13,7 +14,7 @@ from model.predictor import predict_wc #NEW
 import random
 import sys
 import itertools
-from seq_wc import main
+import json
 
 class MultiBio(Ner):
     def __init__(self, parser):
@@ -35,6 +36,7 @@ class MultiBio(Ner):
         self.test_labels = []
         self.train_features_tot = []
         self.test_word = []
+        self.test_word_tag = []
         self.track_list = list()
         self.args = parser.parse_args()
         if self.args.gpu >= 0:
@@ -78,9 +80,10 @@ class MultiBio(Ner):
             self.test_labels.append(test_labels0)
 
             if self.args.output_annotation:  # NEW
-                test_word0 = utils.read_features(self.test_lines[i])
+                test_word0, test_word_tag0 = utils.read_features(self.test_lines[i])
                 self.test_word.append(test_word0)
-
+                self.test_word_tag.append(test_word_tag0)
+            #print (len(self.test_word), len(self.test_labels))
             if self.args.load_check_point:
                 if os.path.isfile(self.args.load_check_point):
                     print("loading checkpoint: '{}'".format(self.args.load_check_point))
@@ -101,7 +104,7 @@ class MultiBio(Ner):
                                                                                                       if_shrink_w_feature=False)
             self.train_features.append(train_features0)
             self.train_labels.append(train_labels0)
-            #print(self.train_labels[0][0])
+
             self.train_features_tot += train_features0
 
         shrink_char_count = [k for (k, v) in iter(self.char_count.items()) if v >= self.args.mini_count]
@@ -132,9 +135,9 @@ class MultiBio(Ner):
                                                                              self.args.caseless, self.args.unk, self.args.word_dim,
                                                                              shrink_to_corpus=self.args.shrink_embedding)
             print("embedding size: '{}'".format(len(self.f_map)))
-        # print("l_set: " +str(len(l_set)))
+
         for label in l_set:
-            # print(label)
+
             if label not in self.l_map:
                 self.l_map[label] = len(self.l_map)
 
@@ -185,8 +188,8 @@ class MultiBio(Ner):
                                   desc=' - Tot it %d (epoch %d)' % (tot_length, self.args.start_epoch), leave=False,
                                   file=sys.stdout):
 
-                file_no = random.randint(0, self.file_num - 1)
-                cur_dataset = self.dataset_loader[file_no]
+                self.file_no = random.randint(0, self.file_num - 1)
+                cur_dataset = self.dataset_loader[self.file_no]
 
                 for f_f, f_p, b_f, b_p, w_f, tg_v, mask_v, len_v in itertools.chain.from_iterable(cur_dataset):
 
@@ -194,7 +197,7 @@ class MultiBio(Ner):
                                                                              len_v)
 
                     self.ner_model.zero_grad()
-                    scores = self.ner_model(f_f, f_p, b_f, b_p, w_f, file_no)
+                    scores = self.ner_model(f_f, f_p, b_f, b_p, w_f, self.file_no)
                     loss = self.crit_ner(scores, tg_v, mask_v)
 
                     epoch_loss += utils.to_scalar(loss)
@@ -218,35 +221,22 @@ class MultiBio(Ner):
 
             # eval & save check_point
             if 'f' in self.args.eva_matrix:
-                dev_f1, dev_pre, dev_rec, dev_acc = self.evaluate(None, None, self.dev_dataset_loader[file_no],
-                                                                         file_no)
-                print(dev_f1, dev_pre, dev_rec, dev_acc)
-                if dev_f1 > best_f1[file_no]:
+                dev_f1, dev_pre, dev_rec, dev_acc = self.evaluate(None, None, self.dev_dataset_loader[self.file_no],
+                                                                         self.file_no)
+                if dev_f1 > best_f1[self.file_no]:
                     patience_count = 0
-                    best_f1[file_no] = dev_f1
-                    best_pre[file_no] = dev_pre
-                    best_rec[file_no] = dev_rec
-
-                    test_f1, test_pre, test_rec, test_acc = self.evaluate(None, None, self.test_dataset_loader[file_no], file_no)
+                    best_f1[self.file_no] = dev_f1
+                    best_pre[self.file_no] = dev_pre
+                    best_rec[self.file_no] = dev_rec
                     self.track_list.append(
-                        {'loss': epoch_loss, 'dev_f1': dev_f1, 'dev_acc': dev_acc, 'test_f1': test_f1,
-                         'test_acc': test_acc})
-
-                    print(
-                        '(loss: %.4f, epoch: %d, dataset: %d, dev F1 = %.4f, dev pre = %.4f, dev rec = %.4f, F1 on test = %.4f, pre on test= %.4f, rec on test= %.4f)' %
-                        (epoch_loss,
-                         self.args.start_epoch,
-                         file_no,
-                         dev_f1,
-                         dev_pre,
-                         dev_rec,
-                         test_f1,
-                         test_pre,
-                         test_rec))
-                    print(self.args.output_annotation)
-                    if self.args.output_annotation:  # NEW
-                        with open('output' + str(file_no) + '.txt', 'w') as fout:
-                            self.predict(self.test_word[file_no], fout, file_no)
+                        {'loss': epoch_loss, 'dev_f1': dev_f1, 'dev_acc': dev_acc})
+                    print('(loss: %.4f, epoch: %d, dataset: %d, dev F1 = %.4f, dev pre = %.4f, dev rec = %.4f)' %
+                          (epoch_loss,
+                           self.args.start_epoch,
+                           self.file_no,
+                           dev_f1,
+                           dev_pre,
+                           dev_rec))
                     try:
                         self.save_model(None)
                     except Exception as inst:
@@ -257,7 +247,7 @@ class MultiBio(Ner):
                     print('(loss: %.4f, epoch: %d, dataset: %d, dev F1 = %.4f, dev pre = %.4f, dev rec = %.4f)' %
                           (epoch_loss,
                            self.args.start_epoch,
-                           file_no,
+                           self.file_no,
                            dev_f1,
                            dev_pre,
                            dev_rec))
@@ -278,10 +268,12 @@ class MultiBio(Ner):
         :return:
         """
         print('annotating')
-        self.predictor.output_batch(self.ner_model, data, fout, file_no)
+        with open(self.args.output_file + str(self.file_no) + '.txt', 'w') as fout:
+            self.predictor.output_batch(self.ner_model, self.test_word[self.file_no], self.test_word_tag[self.file_no],fout, self.file_no)
+        return self.args.output_file + str(self.file_no) + '.txt'
 
     def evaluate(self, predictions, groundTruths, dataset, file_no, **kwargs):
-        return self.evaluator.calc_score(self.ner_model, dataset, file_no)
+        return self.evaluator.calc_score(self.ner_model, self.test_dataset_loader[self.file_no], self.file_no)
 
     def save_model(self, file):
         print("saving model")
@@ -297,8 +289,87 @@ class MultiBio(Ner):
             'args': vars(self.args)
             }, self.args.checkpoint + 'cwlm_lstm_crf')
 
-    def load_model(self, file):
-        main()
+    def load_model(self, file_path):
+        print("CSCI548 model loading")
+        parser = argparse.ArgumentParser(description='Evaluating LM-BLSTM-CRF')
+        parser.add_argument('--load_arg', default='./checkpoint/cwlm_lstm_crf.json', help='path to arg json')
+        parser.add_argument('--load_check_point', default='./checkpoint/cwlm_lstm_crf.model',
+                            help='path to model checkpoint file')
+        parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
+        parser.add_argument('--decode_type', choices=['label', 'string'], default='label',
+                            help='type of decode function, set `label` to couple label with text, or set `string` to insert label into test')
+        parser.add_argument('--batch_size', type=int, default=50, help='size of batch')
+        parser.add_argument('--eva_matrix', choices=['a', 'fa'], default='fa',
+                            help='use f1 and accuracy or accuracy alone')
+        parser.add_argument('--input_file', default=file_path + "/test.tsv", help='path to input un-annotated corpus')
+        parser.add_argument('--output_file', default='annotate/output', help='path to output file')
+        parser.add_argument('--dataset_no', type=int, default=1, help='number of the datasets')
+        self.args = parser.parse_args()
+        print('loading dictionary')
+        with open(self.args.load_arg, 'r') as f:
+            jd = json.load(f)
+        jd = jd['args']
+
+        checkpoint_file = torch.load(self.args.load_check_point, map_location=lambda storage, loc: storage)
+        f_map = checkpoint_file['f_map']
+        l_map = checkpoint_file['l_map']
+        c_map = checkpoint_file['c_map']
+        in_doc_words = checkpoint_file['in_doc_words']
+        if self.args.gpu >= 0:
+            torch.cuda.set_device(self.args.gpu)
+
+        # build model
+        print('loading model')
+        self.ner_model = LM_LSTM_CRF(len(l_map), len(c_map), jd['char_dim'], jd['char_hidden'], jd['char_layers'],
+                                jd['word_dim'], jd['word_hidden'], jd['word_layers'], len(f_map), jd['drop_out'],
+                                self.args.dataset_no, large_CRF=jd['small_crf'], if_highway=jd['high_way'],
+                                in_doc_words=in_doc_words, highway_layers=jd['highway_layers'])
+
+        self.ner_model.load_state_dict(checkpoint_file['state_dict'])
+
+        if self.args.gpu >= 0:
+            if_cuda = True
+            torch.cuda.set_device(self.args.gpu)
+            self.ner_model.cuda()
+            packer = CRFRepack_WC(len(l_map), True)
+        else:
+            if_cuda = False
+            packer = CRFRepack_WC(len(l_map), False)
+
+        decode_label = (self.args.decode_type == 'label')
+        predictor = predict_wc(if_cuda, f_map, c_map, l_map, f_map['<eof>'], c_map['\n'], l_map['<pad>'],
+                               l_map['<start>'],
+                               decode_label, self.args.batch_size, jd['caseless'])
+        evaluator = eval_wc(packer, l_map, self.args.eva_matrix)
+        # loading corpus
+        print('loading corpus')
+        lines = []
+        features = []
+        tags = []
+        feature_tags = []
+        with codecs.open(self.args.input_file, 'r', 'utf-8') as f:
+            for i, line in enumerate(f):
+                if i == 2000:
+                    break
+                if line == '\n':
+                    features.append(utils.read_features(lines))
+                    feature_tags.append(tags)
+                    tags = []
+                    lines = []
+                    continue
+                tmp = line.split()
+                lines.append(tmp[0])
+                tags.append((tmp[1]))
+        #print(len(feature_tags),len(features))
+        for idx in range(self.args.dataset_no):
+            print('annotating the entity type', idx)
+            with open(self.args.output_file + str(idx) + '.txt', 'w') as fout:
+                for feature, tag in zip(features, feature_tags):
+                    predictor.output_batch(self.ner_model, feature, tag, fout, idx)
+                    fout.write('\n')
+        test_f1, test_pre, test_rec, test_acc = evaluator.calc_score(self.ner_model, self.test_dataset_loader[0], 0)
+        print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
+        return self.args.output_file + str(idx) + '.txt'
 
     def build_model(self):
         print('building model')

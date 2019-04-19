@@ -171,9 +171,8 @@ if __name__ == "__main__":
             f_map = {'<eof>': 0}
         f_map, embedding_tensor, in_doc_words = utils.load_embedding_wlm(args.emb_file, ' ', f_map, dt_f_set, args.caseless, args.unk, args.word_dim, shrink_to_corpus=args.shrink_embedding)
         print("embedding size: '{}'".format(len(f_map)))
-    #print("l_set: " +str(len(l_set)))
+
     for label in l_set:
-        #print(label)
         if label not in l_map:
             l_map[label] = len(l_map)
 

@@ -35,7 +35,7 @@ class predict:
         else:
             self.decode_str = self.decode_s
 
-    def decode_l(self, feature, label):
+    def decode_l(self, feature, label, tag):
         """
         decode a sentence coupled with label
 
@@ -43,7 +43,7 @@ class predict:
             feature (list): words list
             label (list): label list
         """
-        return '\n'.join(map(lambda t: t[0] + ' '+ self.r_l_map[t[1]], list(zip(feature, label.tolist()))))
+        return '\n'.join(map(lambda t: t[0] + ' ' + t[2] + " "+self.r_l_map[t[1]], list(zip(feature, label.tolist(), tag))))
 
     def decode_s(self, feature, label):
         """
@@ -114,7 +114,7 @@ class predict:
 
         return chunks
 
-    def output_batch(self, ner_model, documents, fout, file_no):
+    def output_batch(self, ner_model, documents, tag, fout, file_no):
         """
         decode the whole corpus in the specific format by calling apply_model to fit specific models
 
@@ -130,6 +130,7 @@ class predict:
                 desc=' - Process', leave=False, file=sys.stdout):
             # fout.write('-DOCSTART- -DOCSTART- -DOCSTART-\n\n')
             features = documents[d_ind]
+            features_tag = tag[d_ind]
             f_len = len(features)
             for ind in range(0, f_len, self.batch_size):
                 eind = min(f_len, ind + self.batch_size)
@@ -139,7 +140,7 @@ class predict:
                     f = features[ind2]
                     l = labels[ind2 - ind][0: len(f) ]
                     #print(l)
-                    fout.write(self.decode_str(features[ind2], l) + '\n')
+                    fout.write(self.decode_str(features[ind2], l, features_tag[ind2]) + '\n')
 
     def apply_model(self, ner_model, features):
         """
