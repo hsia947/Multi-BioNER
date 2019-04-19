@@ -13,7 +13,7 @@ def main(dataset_path):
                         help='path to development file')
     parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test.tsv"],
                         help='path to test file')
-    parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
+    parser.add_argument('--gpu', type=int, default=0, help='gpu id')
     parser.add_argument('--batch_size', type=int, default=10, help='batch_size')
     parser.add_argument('--unk', default='unk', help='unknow-token in pre-trained embedding')
     parser.add_argument('--char_hidden', type=int, default=300, help='dimension of char-level layers')
@@ -64,5 +64,5 @@ def main(dataset_path):
 
 
 if __name__ == "__main__":
-    out_path = main("data_bioner_5\BC2GM-IOBES")
+    out_path = main("data_bioner_5/BC2GM-IOBES")
     print(out_path)

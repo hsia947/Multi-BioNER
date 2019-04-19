@@ -56,18 +56,18 @@ class MultiBio(Ner):
         for i in range(self.file_num):
             with codecs.open(self.args.train_file[i], 'r', 'utf-8') as f:
                 lines0 = f.readlines()
-                lines0 = lines0[0:2000]
+                #lines0 = lines0[0:2000]
                 # print (len(lines0))
             self.lines.append(lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.dev_file[i], 'r', 'utf-8') as f:
                 dev_lines0 = f.readlines()
-                dev_lines0 = dev_lines0[0:2000]
+                #dev_lines0 = dev_lines0[0:2000]
             self.dev_lines.append(dev_lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.test_file[i], 'r', 'utf-8') as f:
                 test_lines0 = f.readlines()
-                test_lines0 = test_lines0[0:2000]
+                #test_lines0 = test_lines0[0:2000]
             self.test_lines.append(test_lines0)
 
         for i in range(self.file_num):
@@ -295,7 +295,7 @@ class MultiBio(Ner):
         parser.add_argument('--load_arg', default='./checkpoint/cwlm_lstm_crf.json', help='path to arg json')
         parser.add_argument('--load_check_point', default='./checkpoint/cwlm_lstm_crf.model',
                             help='path to model checkpoint file')
-        parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
+        parser.add_argument('--gpu', type=int, default=0, help='gpu id')
         parser.add_argument('--decode_type', choices=['label', 'string'], default='label',
                             help='type of decode function, set `label` to couple label with text, or set `string` to insert label into test')
         parser.add_argument('--batch_size', type=int, default=50, help='size of batch')
@@ -349,8 +349,8 @@ class MultiBio(Ner):
         feature_tags = []
         with codecs.open(self.args.input_file, 'r', 'utf-8') as f:
             for i, line in enumerate(f):
-                if i == 2000:
-                    break
+                #if i == 2000:
+                   # break
                 if line == '\n':
                     features.append(utils.read_features(lines))
                     feature_tags.append(tags)
