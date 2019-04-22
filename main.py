@@ -1,5 +1,5 @@
 import argparse
-
+import matplotlib.pyplot as plt
 from multibio_model import MultiBio
 
 
@@ -7,13 +7,13 @@ def main(dataset_path):
     parser = argparse.ArgumentParser(description='Learning with LM-LSTM-CRF together with Language Model')
     parser.add_argument('--rand_embedding', action='store_true', help='random initialize word embedding')
     parser.add_argument('--emb_file', default='data_bioner_5/source.txt', help='path to pre-trained embedding')
-    parser.add_argument('--train_file', nargs='+', default=[dataset_path+"/merge.tsv"],
+    parser.add_argument('--train_file', nargs='+', default=[dataset_path+"/train"],
                         help='path to training file')
-    parser.add_argument('--dev_file', nargs='+', default=[dataset_path+"/devel.tsv"],
+    parser.add_argument('--dev_file', nargs='+', default=[dataset_path+"/devel"],
                         help='path to development file')
-    parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test.tsv"],
+    parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test"],
                         help='path to test file')
-    parser.add_argument('--gpu', type=int, default=0, help='gpu id')
+    parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
     parser.add_argument('--batch_size', type=int, default=10, help='batch_size')
     parser.add_argument('--unk', default='unk', help='unknow-token in pre-trained embedding')
     parser.add_argument('--char_hidden', type=int, default=300, help='dimension of char-level layers')
@@ -53,13 +53,29 @@ def main(dataset_path):
 
     model = MultiBio(parser)
     model.read_dataset(None, None)
-    #model.build_model()
-    #model.train(None)
-    #out_path = model.predict(None, None, None)
-    #test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
-    #print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
+    model.build_model()
+    loss_list, acc_list = model.train(None)
+    plt.subplot(2, 1, 1)
+    plt.title('Training loss')
+    # loss_hist_ = loss_hist[1::100]  # sparse the curve a bit
+    plt.plot(loss_list, '-o')
+    plt.xlim(0,5)
+    plt.xlabel('Epoch')
 
-    out_path = model.load_model(dataset_path)
+    plt.subplot(2, 1, 2)
+    plt.title('Accuracy')
+    plt.plot(acc_list, '-o', label='Training')
+    plt.xlabel('Epoch')
+    plt.axis([0, 5, 0, 100])
+    plt.legend(loc='lower right')
+    # plt.gcf().set_size_inches(15, 12)
+    plt.savefig('BC2GM-IOBES.png')
+    plt.show()
+    out_path = model.predict(None, None, None)
+    test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
+    print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))
+
+    #out_path = model.load_model(dataset_path)
     return out_path
 
 

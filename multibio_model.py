@@ -56,18 +56,18 @@ class MultiBio(Ner):
         for i in range(self.file_num):
             with codecs.open(self.args.train_file[i], 'r', 'utf-8') as f:
                 lines0 = f.readlines()
-                #lines0 = lines0[0:2000]
+                lines0 = lines0[0:2000]
                 # print (len(lines0))
             self.lines.append(lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.dev_file[i], 'r', 'utf-8') as f:
                 dev_lines0 = f.readlines()
-                #dev_lines0 = dev_lines0[0:2000]
+                dev_lines0 = dev_lines0[0:2000]
             self.dev_lines.append(dev_lines0)
         for i in range(self.file_num):
             with codecs.open(self.args.test_file[i], 'r', 'utf-8') as f:
                 test_lines0 = f.readlines()
-                #test_lines0 = test_lines0[0:2000]
+                test_lines0 = test_lines0[0:2000]
             self.test_lines.append(test_lines0)
 
         for i in range(self.file_num):
@@ -160,7 +160,8 @@ class MultiBio(Ner):
 
     def train(self, data, *args, **kwargs):
         tot_length = sum(map(lambda t: len(t), self.dataset_loader))
-
+        loss_list = []
+        acc_list = []
         best_f1 = []
         for i in range(self.file_num):
             best_f1.append(float('-inf'))
@@ -223,6 +224,8 @@ class MultiBio(Ner):
             if 'f' in self.args.eva_matrix:
                 dev_f1, dev_pre, dev_rec, dev_acc = self.evaluate(None, None, self.dev_dataset_loader[self.file_no],
                                                                          self.file_no)
+                loss_list.append(epoch_loss)
+                acc_list.append(dev_acc)
                 if dev_f1 > best_f1[self.file_no]:
                     patience_count = 0
                     best_f1[self.file_no] = dev_f1
@@ -258,6 +261,7 @@ class MultiBio(Ner):
 
             if patience_count >= self.args.patience and self.args.start_epoch >= self.args.least_iters:
                 break
+        return loss_list, acc_list
 
     def predict(self, data, fout, file_no, **kwargs):
         """
@@ -349,8 +353,8 @@ class MultiBio(Ner):
         feature_tags = []
         with codecs.open(self.args.input_file, 'r', 'utf-8') as f:
             for i, line in enumerate(f):
-                #if i == 2000:
-                   # break
+                if i == 2000:
+                   break
                 if line == '\n':
                     features.append(utils.read_features2(lines))
                     feature_tags.append(tags)

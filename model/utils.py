@@ -221,7 +221,10 @@ def read_corpus(lines):
         if not (line.isspace() or (len(line) > 10 and line[0:10] == '-DOCSTART-')):
             line = line.rstrip('\n').split()
             tmp_fl.append(line[0])
-            tmp_ll.append(line[-1])
+            if len(line) >=4:
+                tmp_ll.append(line[3])
+            else:
+                tmp_ll.append(line[-1])
         elif len(tmp_fl) > 0:
             features.append(tmp_fl)
             labels.append(tmp_ll)
@@ -248,7 +251,10 @@ def read_features(lines): #NEW
         if not (line.isspace() or if_doc_end):
             tmp = line.rstrip().split()
             tmp_fl.append(tmp[0])
-            tmp_f2.append(tmp[1])
+            if len(line) >= 4:
+                tmp_f2.append(line[3])
+            else:
+                tmp_f2.append(line[-1])
         else:
             if len(tmp_fl) > 0:
                 features.append(tmp_fl)

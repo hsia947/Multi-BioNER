@@ -1,1926 +1,2331 @@
-Physical O O
-mapping O O
-220 O O
+Physical s O
+mapping p O
+220 	 O
 kb O O
-centromeric O O
+centromeric t O
 of O O
-the O O
-human B-GENE O
-MHC E-GENE O
-and O O
-DNA O O
-sequence O O
-analysis O O
+the 	 O
+human a O
+MHC 	 O
+and 	 O
+DNA 	 O
+sequence u O
+analysis l O
 of O O
-the O O
+the 	 O
 43 O O
-- O O
+- 
+ O
 kb O O
-segment O O
-including O O
-the O O
-RING1 S-GENE O
-, O O
-HKE6 S-GENE O
-, O O
-and O O
-HKE4 B-GENE O
-genes E-GENE O
-. O O
-The O O
-synthesis O O
+segment m O
+including l O
+the 	 O
+RING1 G O
+, 
+ O
+HKE6 6 O
+, 
+ O
+and 	 O
+HKE4 4 O
+genes e O
+. 
+ O
+The 	 O
+synthesis t O
 of O O
-endo O O
-- O O
-adduct O O
-[ O O
-4aS O O
-, O O
+endo o O
+- 
+ O
+adduct u O
+[ 
+ O
+4aS 	 O
+, 
+ O
 5S O O
-, O O
+, 
+ O
 8R O O
-, O O
-8aR O O
-, O O
+, 
+ O
+8aR 	 O
+, 
+ O
 SS O O
-] O O
-- O O
+] 
+ O
+- 
+ O
 9d O O
-resulting O O
-from O O
-cycloaddition O O
+resulting u O
+from m O
+cycloaddition l O
 on O O
-the O O
-substituted O O
-C O O
-( O O
-2 O O
-) O O
-- O O
-C O O
-( O O
-3 O O
-) O O
-double O O
-bond O O
-was O O
-achieved O O
+the 	 O
+substituted s O
+C 
+ O
+( 
+ O
+2 
+ O
+) 
+ O
+- 
+ O
+C 
+ O
+( 
+ O
+3 
+ O
+) 
+ O
+double b O
+bond d O
+was 	 O
+achieved i O
 in O O
-a O O
-chemo O O
-- O O
-and O O
-diastereoselective O O
-way O O
-from O O
-quinone O O
+a 
+ O
+chemo m O
+- 
+ O
+and 	 O
+diastereoselective s O
+way 	 O
+from m O
+quinone n O
 1d O O
 in O O
-the O O
-presence O O
+the 	 O
+presence s O
 of O O
-ZnBr O O
-( O O
-2 O O
-) O O
-. O O
-DNA O O
-elements O O
-recognizing O O
-NF B-GENE O
-- I-GENE O
-Y E-GENE O
-and O O
-Sp1 S-GENE O
-regulate O O
-the O O
-human B-GENE O
-multidrug I-GENE O
-- I-GENE O
-resistance I-GENE O
-gene I-GENE O
-promoter E-GENE O
-. O O
-Radioimmunoassay O O
+ZnBr r O
+( 
+ O
+2 
+ O
+) 
+ O
+. 
+ O
+DNA 	 O
+elements m O
+recognizing o O
+NF B O
+- - O
+Y - O
+and 	 O
+Sp1 	 O
+regulate u O
+the 	 O
+human a O
+multidrug t O
+- - O
+resistance i O
+gene e O
+promoter m O
+. 
+ O
+Radioimmunoassay i O
 of O O
-plasma B-GENE O
-gonadotropins E-GENE O
-; O O
-problems O O
+plasma s O
+gonadotropins a O
+; 
+ O
+problems b O
 of O O
-specificity O O
-Patients O O
-randomized O O
-into O O
-the O O
-active O O
-treatment O O
-groups O O
-A30 O O
-( O O
-n O O
-= O O
+specificity c O
+Patients i O
+randomized d O
+into o O
+the 	 O
+active i O
+treatment a O
+groups u O
+A30 	 O
+( 
+ O
+n 
+ O
+= 
+ O
 49 O O
-) O O
-and O O
-A60 O O
-( O O
-n O O
-= O O
+) 
+ O
+and 	 O
+A60 	 O
+( 
+ O
+n 
+ O
+= 
+ O
 48 O O
-) O O
-received O O
-topical O O
-treatment O O
-with O O
-3 O O
-. O O
-0 O O
-% O O
-diclofenac O O
+) 
+ O
+received e O
+topical i O
+treatment a O
+with h O
+3 
+ O
+. 
+ O
+0 
+ O
+% 
+ O
+diclofenac l O
 in O O
-2 O O
-. O O
-5 O O
-% O O
-hyaluronan O O
-gel O O
-0 O O
-. O O
-5 O O
-g O O
-twice O O
-daily O O
-for O O
+2 
+ O
+. 
+ O
+5 
+ O
+% 
+ O
+hyaluronan l O
+gel 	 O
+0 
+ O
+. 
+ O
+5 
+ O
+g 
+ O
+twice c O
+daily l O
+for 	 O
 30 O O
 or O O
 60 O O
-days O O
-, O O
-respectively O O
-. O O
+days s O
+, 
+ O
+respectively p O
+. 
+ O
 As O O
-tat S-GENE O
-itself O O
-dramatically O O
-increases O O
-HIV O O
-- O O
-1 O O
-gene O O
-expression O O
-, O O
+tat 	 O
+itself e O
+dramatically m O
+increases r O
+HIV 	 O
+- 
+ O
+1 
+ O
+gene e O
+expression r O
+, 
+ O
 it O O
-too O O
+too 	 O
 is O O
-presumably O O
-regulated O O
+presumably s O
+regulated u O
 in O O
-the O O
-latent O O
-state O O
-, O O
-and O O
-may O O
-also O O
+the 	 O
+latent e O
+state t O
+, 
+ O
+and 	 O
+may 	 O
+also o O
 be O O
-activated O O
+activated i O
 by O O
-mitogenic O O
-stimulation O O
-. O O
+mitogenic o O
+stimulation m O
+. 
+ O
 To O O
-clarify O O
-the O O
-difference O O
-, O O
-both O O
-the O O
-Crk B-GENE O
-II E-GENE O
-and O O
-Crk B-GENE O
-II I-GENE O
-- I-GENE O
-23 E-GENE O
-, O O
-proteins O O
-were O O
-expressed O O
+clarify r O
+the 	 O
+difference f O
+, 
+ O
+both h O
+the 	 O
+Crk 	 O
+II E O
+and 	 O
+Crk 	 O
+II I O
+- - O
+23 E O
+, 
+ O
+proteins t O
+were e O
+expressed r O
 in O O
-E O O
-. O O
-coli O O
-and O O
-examined O O
-their O O
-binding O O
-capacity O O
+E 
+ O
+. 
+ O
+coli i O
+and 	 O
+examined m O
+their i O
+binding d O
+capacity a O
 in O O
-vitro O O
-. O O
-CONCLUSIONS O O
-: O O
-Systemic O O
-factors O O
-that O O
-increase O O
-bone O O
-mineral O O
-density O O
-appear O O
+vitro r O
+. 
+ O
+CONCLUSIONS C O
+: 
+ O
+Systemic t O
+factors t O
+that t O
+increase r O
+bone e O
+mineral e O
+density s O
+appear e O
 to O O
 be O O
-involved O O
+involved o O
 in O O
-the O O
-pathogenesis O O
+the 	 O
+pathogenesis h O
 of O O
-ossification O O
+ossification i O
 of O O
-the O O
-posterior O O
-longitudinal O O
-ligament O O
-, O O
-and O O
-these O O
-factors O O
-may O O
+the 	 O
+posterior t O
+longitudinal g O
+ligament a O
+, 
+ O
+and 	 O
+these s O
+factors t O
+may 	 O
 be O O
-activated O O
-after O O
-middle O O
-age O O
-. O O
-Thus O O
-, O O
+activated i O
+after e O
+middle d O
+age 	 O
+. 
+ O
+Thus s O
+, 
+ O
 in O O
-V O O
-. O O
-furnissii O O
-, O O
-the O O
-E B-GENE O
-. I-GENE O
-coli I-GENE O
-manX I-GENE O
-equivalent E-GENE O
-comprises O O
-two O O
-genes O O
-, O O
-which O O
-are O O
-separated O O
+V 
+ O
+. 
+ O
+furnissii n O
+, 
+ O
+the 	 O
+E - O
+. - O
+coli i O
+manX X O
+equivalent i O
+comprises p O
+two 	 O
+genes e O
+, 
+ O
+which c O
+are 	 O
+separated a O
 in O O
-the O O
-genome O O
+the 	 O
+genome o O
 by O O
-two O O
-other O O
-genes O O
+two 	 O
+other e O
+genes e O
 of O O
-the O O
-ptsM B-GENE O
-complex E-GENE O
-. O O
-Id B-GENE O
-- I-GENE O
-1H E-GENE O
-and O O
-Id B-GENE O
-- I-GENE O
-2H E-GENE O
-seem O O
+the 	 O
+ptsM M O
+complex p O
+. 
+ O
+Id B O
+- - O
+1H E O
+and 	 O
+Id B O
+- - O
+2H E O
+seem m O
 to O O
 be O O
-human O O
-homologues O O
+human a O
+homologues o O
 of O O
-mouse B-GENE O
-Id I-GENE O
-- I-GENE O
-1 E-GENE O
-and O O
-Id B-GENE O
-- I-GENE O
-2 E-GENE O
-, O O
-respectively O O
-, O O
-and O O
-have O O
-potential O O
+mouse s O
+Id I O
+- - O
+1 - O
+and 	 O
+Id B O
+- - O
+2 - O
+, 
+ O
+respectively p O
+, 
+ O
+and 	 O
+have e O
+potential e O
 to O O
-encode O O
-154 O O
-and O O
-135 O O
-amino O O
-acid O O
-proteins O O
-. O O
-Characterization O O
+encode o O
+154 	 O
+and 	 O
+135 	 O
+amino n O
+acid d O
+proteins t O
+. 
+ O
+Characterization r O
 of O O
-insertion O O
-mutations O O
+insertion e O
+mutations a O
 in O O
-the O O
-Saccharomyces B-GENE O
-cerevisiae I-GENE O
-MSH1 E-GENE O
-and O O
-MSH2 B-GENE O
-genes E-GENE O
-: O O
-evidence O O
-for O O
-separate O O
-mitochondrial O O
-and O O
-nuclear O O
-functions O O
-. O O
-Transcription O O
+the 	 O
+Saccharomyces c O
+cerevisiae e O
+MSH1 1 O
+and 	 O
+MSH2 2 O
+genes e O
+: 
+ O
+evidence d O
+for 	 O
+separate a O
+mitochondrial o O
+and 	 O
+nuclear l O
+functions c O
+. 
+ O
+Transcription n O
 of O O
-FN B-GENE O
-promoter E-GENE O
-- O O
-chloramphenicol B-GENE O
-acetyltransferase E-GENE O
-fusion O O
-genes O O
-carrying O O
-the O O
-base O O
-substitution O O
+FN B O
+promoter m O
+- 
+ O
+chloramphenicol o O
+acetyltransferase t O
+fusion i O
+genes e O
+carrying r O
+the 	 O
+base e O
+substitution s O
 in O O
-one O O
+one 	 O
 or O O
-more O O
+more e O
 of O O
-these O O
-G O O
-- O O
-rich O O
-sequences O O
-both O O
+these s O
+G 
+ O
+- 
+ O
+rich h O
+sequences u O
+both h O
 in O O
-vivo O O
-and O O
+vivo o O
+and 	 O
 in O O
-vitro O O
-revealed O O
-that O O
-the O O
-base O O
-substitution O O
+vitro r O
+revealed e O
+that t O
+the 	 O
+base e O
+substitution s O
 in O O
-any O O
-G O O
-- O O
-rich O O
-sequence O O
-results O O
+any 	 O
+G 
+ O
+- 
+ O
+rich h O
+sequence u O
+results u O
 in O O
-reduction O O
+reduction u O
 of O O
-promoter O O
-activity O O
-, O O
-although O O
-the O O
-downstream O O
+promoter m O
+activity i O
+, 
+ O
+although h O
+the 	 O
+downstream n O
 GC O O
-box O O
-( O O
-GCd O O
-) O O
-plays O O
-a O O
-primary O O
-role O O
-. O O
-Morphologically O O
-, O O
-corrugation O O
+box 	 O
+( 
+ O
+GCd 	 O
+) 
+ O
+plays y O
+a 
+ O
+primary m O
+role e O
+. 
+ O
+Morphologically p O
+, 
+ O
+corrugation r O
 of O O
-the O O
-internal O O
-elastic O O
-lamina O O
+the 	 O
+internal e O
+elastic s O
+lamina i O
 of O O
-vessels O O
-was O O
-often O O
-observed O O
+vessels s O
+was 	 O
+often e O
+observed e O
 in O O
-the O O
-vehicle O O
-- O O
-treated O O
-group O O
-, O O
-but O O
-was O O
-not O O
-prominent O O
+the 	 O
+vehicle i O
+- 
+ O
+treated a O
+group u O
+, 
+ O
+but 	 O
+was 	 O
+not 	 O
+prominent m O
 in O O
-the O O
-GLNVA O O
-- O O
-treated O O
-groups O O
+the 	 O
+GLNVA V O
+- 
+ O
+treated a O
+groups u O
 or O O
-healthy O O
-controls O O
-. O O
-A O O
+healthy l O
+controls t O
+. 
+ O
+A 
+ O
 GT O O
-- O O
-rich O O
-sequence O O
-binding O O
-the O O
-transcription B-GENE O
-factor I-GENE O
-Sp1 E-GENE O
+- 
+ O
+rich h O
+sequence u O
+binding d O
+the 	 O
+transcription n O
+factor t O
+Sp1 	 O
 is O O
-crucial O O
-for O O
-high O O
-expression O O
+crucial c O
+for 	 O
+high h O
+expression r O
 of O O
-the O O
-human B-GENE O
-type I-GENE O
-VII I-GENE O
-collagen I-GENE O
-gene E-GENE O
-( O O
-COL7A1 S-GENE O
-) O O
+the 	 O
+human a O
+type e O
+VII 	 O
+collagen l O
+gene e O
+( 
+ O
+COL7A1 7 O
+) 
+ O
 in O O
-fibroblasts O O
-and O O
-keratinocytes O O
-. O O
-Each O O
-received O O
+fibroblasts r O
+and 	 O
+keratinocytes a O
+. 
+ O
+Each h O
+received e O
 20 O O
 mL O O
 of O O
-one O O
+one 	 O
 of O O
-three O O
-test O O
-solutions O O
-: O O
-levobupivacaine O O
-control O O
-, O O
-levobupivacaine O O
-and O O
-fentanyl O O
-2 O O
-microg O O
-/ O O
+three e O
+test t O
+solutions u O
+: 
+ O
+levobupivacaine o O
+control t O
+, 
+ O
+levobupivacaine o O
+and 	 O
+fentanyl t O
+2 
+ O
+microg r O
+/ 
+ O
 mL O O
-, O O
+, 
+ O
 or O O
-levobupivacaine O O
-and O O
-fentanyl O O
-3 O O
-microg O O
-/ O O
+levobupivacaine o O
+and 	 O
+fentanyl t O
+3 
+ O
+microg r O
+/ 
+ O
 mL O O
-. O O
-The O O
-XPR2 B-GENE O
-gene E-GENE O
-from O O
-Yarrowia O O
-lipolytica O O
-encodes O O
+. 
+ O
+The 	 O
+XPR2 2 O
+gene e O
+from m O
+Yarrowia r O
+lipolytica o O
+encodes o O
 an O O
-inducible O O
-alkaline B-GENE O
-extracellular I-GENE O
-protease E-GENE O
-. O O
-CONCLUSIONS O O
-: O O
-This O O
-study O O
-shows O O
-that O O
-the O O
-annual O O
-rate O O
+inducible u O
+alkaline a O
+extracellular r O
+protease t O
+. 
+ O
+CONCLUSIONS C O
+: 
+ O
+This s O
+study d O
+shows w O
+that t O
+the 	 O
+annual u O
+rate e O
 of O O
 de O O
-novo O O
-aneurysm O O
-formation O O
+novo o O
+aneurysm u O
+formation m O
 is O O
-relatively O O
-high O O
-( O O
-0 O O
-. O O
+relatively a O
+high h O
+( 
+ O
+0 
+ O
+. 
+ O
 89 O O
-% O O
-) O O
-and O O
-that O O
-the O O
-cumulative O O
-risk O O
-becomes O O
-significant O O
-after O O
-9 O O
-years O O
-. O O
+% 
+ O
+) 
+ O
+and 	 O
+that t O
+the 	 O
+cumulative u O
+risk k O
+becomes o O
+significant n O
+after e O
+9 
+ O
+years r O
+. 
+ O
 It O O
-was O O
-found O O
-that O O
-Nopp140 S-GENE O
-binds O O
-primarily O O
+was 	 O
+found n O
+that t O
+Nopp140 p O
+binds d O
+primarily m O
 to O O
-the O O
-CK2 B-GENE O
-regulatory I-GENE O
-subunit I-GENE O
-, I-GENE O
-beta E-GENE O
-. O O
-Juvenile O O
-idiopathic O O
-inflammatory O O
-myopathies O O
-: O O
-the O O
-value O O
+the 	 O
+CK2 	 O
+regulatory u O
+subunit u O
+, - O
+beta a O
+. 
+ O
+Juvenile e O
+idiopathic o O
+inflammatory l O
+myopathies p O
+: 
+ O
+the 	 O
+value u O
 of O O
-magnetic O O
-resonance O O
-imaging O O
+magnetic n O
+resonance o O
+imaging g O
 in O O
-the O O
-detection O O
+the 	 O
+detection e O
 of O O
-muscle O O
-involvement O O
-. O O
-Previous O O
-analysis O O
+muscle c O
+involvement o O
+. 
+ O
+Previous v O
+analysis l O
 of O O
-this O O
-motif O O
+this s O
+motif i O
 in O O
-the O O
-lactose B-GENE O
-permease E-GENE O
-( O O
-A O O
-. O O
-Combined O O
-chemotherapy O O
-with O O
+the 	 O
+lactose t O
+permease m O
+( 
+ O
+A 
+ O
+. 
+ O
+Combined b O
+chemotherapy m O
+with h O
 VM O O
 26 O O
-and O O
-BCNU O O
-for O O
-recurrent O O
-malignant O O
-gliomas O O
-after O O
-operation O O
-and O O
-irradiation O O
-. O O
-Like O O
-other O O
-IAPs S-GENE O
-, O O
-ch B-GENE O
-- I-GENE O
-IAP1 E-GENE O
-contains O O
-the O O
-N B-GENE O
-- I-GENE O
-terminal I-GENE O
-baculovirus I-GENE O
-IAP I-GENE O
-repeats E-GENE O
-and O O
-C O O
-- O O
-terminal O O
-RING O O
-finger O O
-motifs O O
-. O O
-Effects O O
+and 	 O
+BCNU U O
+for 	 O
+recurrent u O
+malignant i O
+gliomas o O
+after e O
+operation r O
+and 	 O
+irradiation a O
+. 
+ O
+Like e O
+other e O
+IAPs s O
+, 
+ O
+ch B O
+- - O
+IAP1 1 O
+contains t O
+the 	 O
+N - O
+- - O
+terminal m O
+baculovirus u O
+IAP 	 O
+repeats e O
+and 	 O
+C 
+ O
+- 
+ O
+terminal m O
+RING G O
+finger g O
+motifs i O
+. 
+ O
+Effects e O
 of O O
-long O O
-- O O
-term O O
-use O O
+long g O
+- 
+ O
+term m O
+use 	 O
 of O O
-raloxifene O O
-, O O
-a O O
-selective O O
-estrogen B-GENE O
-receptor E-GENE O
-modulator O O
-, O O
+raloxifene o O
+, 
+ O
+a 
+ O
+selective e O
+estrogen r O
+receptor e O
+modulator u O
+, 
+ O
 on O O
-thyroid O O
-function O O
-test O O
-profiles O O
-. O O
-The O O
-donors O O
+thyroid r O
+function c O
+test t O
+profiles f O
+. 
+ O
+The 	 O
+donors o O
 of O O
 10 O O
-patients O O
-were O O
-ABO O O
-- O O
-incompatible O O
-, O O
-and O O
-for O O
-five O O
-pairs O O
-the O O
-ABO O O
-incompatibility O O
-was O O
-major O O
-. O O
-Alternative O O
-splicing O O
+patients i O
+were e O
+ABO 	 O
+- 
+ O
+incompatible o O
+, 
+ O
+and 	 O
+for 	 O
+five e O
+pairs r O
+the 	 O
+ABO 	 O
+incompatibility o O
+was 	 O
+major o O
+. 
+ O
+Alternative e O
+splicing i O
 of O O
-the O O
-human B-GENE O
-serotonin I-GENE O
-transporter I-GENE O
-gene E-GENE O
-. O O
-Interestingly O O
-, O O
-basal O O
-MAPK S-GENE O
-, O O
-but O O
-not O O
-Raf B-GENE O
-- I-GENE O
-1 E-GENE O
-, O O
-activity O O
-was O O
-constitutively O O
-enhanced O O
+the 	 O
+human a O
+serotonin o O
+transporter n O
+gene e O
+. 
+ O
+Interestingly e O
+, 
+ O
+basal a O
+MAPK K O
+, 
+ O
+but 	 O
+not 	 O
+Raf 	 O
+- - O
+1 - O
+, 
+ O
+activity i O
+was 	 O
+constitutively s O
+enhanced a O
 in O O
-Jak1 S-GENE O
-- O O
-deficient O O
-HeLa O O
-cells O O
-. O O
-This O O
-case O O
-report O O
-describes O O
-the O O
-treatment O O
+Jak1 1 O
+- 
+ O
+deficient i O
+HeLa a O
+cells l O
+. 
+ O
+This s O
+case e O
+report o O
+describes c O
+the 	 O
+treatment a O
 of O O
-a O O
-patient O O
-with O O
-periodontosis O O
-. O O
-The O O
-aim O O
+a 
+ O
+patient i O
+with h O
+periodontosis i O
+. 
+ O
+The 	 O
+aim 	 O
 of O O
-this O O
-work O O
-was O O
+this s O
+work k O
+was 	 O
 to O O
-organize O O
-chemical O O
-data O O
+organize a O
+chemical m O
+data a O
 in O O
-a O O
-client O O
-- O O
-server O O
-environment O O
-using O O
-Database O O
-Management O O
-System O O
-and O O
-Web O O
-fashion O O
-for O O
-the O O
-client O O
-interface O O
-. O O
-Cerumen O O
-management O O
+a 
+ O
+client e O
+- 
+ O
+server v O
+environment i O
+using n O
+Database a O
+Management a O
+System t O
+and 	 O
+Web 	 O
+fashion h O
+for 	 O
+the 	 O
+client e O
+interface e O
+. 
+ O
+Cerumen u O
+management a O
 in O O
-hearing O O
-conservation O O
-: O O
-the O O
-Dallas O O
-( O O
-Texas O O
-) O O
-Independent O O
-School O O
-District O O
-program O O
-. O O
-Lactate O O
-, O O
-pyruvate O O
-and O O
-actual O O
+hearing r O
+conservation s O
+: 
+ O
+the 	 O
+Dallas l O
+( 
+ O
+Texas a O
+) 
+ O
+Independent e O
+School o O
+District t O
+program g O
+. 
+ O
+Lactate t O
+, 
+ O
+pyruvate u O
+and 	 O
+actual u O
 pH O O
-values O O
+values u O
 in O O
-the O O
-venous O O
-blood O O
+the 	 O
+venous o O
+blood o O
 of O O
-newborn O O
-calves O O
-This O O
-article O O
-focuses O O
+newborn b O
+calves v O
+This s O
+article i O
+focuses u O
 on O O
-a O O
-general O O
-approach O O
+a 
+ O
+general e O
+approach r O
 to O O
-the O O
-use O O
+the 	 O
+use 	 O
 of O O
-ARV O O
-agents O O
-. O O
-Platelets O O
-and O O
-RBCs O O
-from O O
-each O O
-animal O O
-were O O
-labeled O O
-with O O
-51Cr O O
-and O O
-99mTc O O
-, O O
-respectively O O
-, O O
-and O O
-were O O
-rapidly O O
-injected O O
-into O O
-the O O
-right O O
-atrium O O
-while O O
-blood O O
-was O O
-sampled O O
-from O O
-the O O
-ascending O O
-aorta O O
-. O O
-The O O
-comparisons O O
+ARV 	 O
+agents n O
+. 
+ O
+Platelets t O
+and 	 O
+RBCs s O
+from m O
+each h O
+animal m O
+were e O
+labeled e O
+with h O
+51Cr r O
+and 	 O
+99mTc T O
+, 
+ O
+respectively p O
+, 
+ O
+and 	 O
+were e O
+rapidly i O
+injected e O
+into o O
+the 	 O
+right h O
+atrium i O
+while l O
+blood o O
+was 	 O
+sampled p O
+from m O
+the 	 O
+ascending e O
+aorta t O
+. 
+ O
+The 	 O
+comparisons p O
 of O O
-swimming O O
-performance O O
-before O O
-and O O
-after O O
-treatments O O
-with O O
-deltamethrin O O
-have O O
-shown O O
-a O O
-significant O O
-effect O O
+swimming m O
+performance f O
+before o O
+and 	 O
+after e O
+treatments a O
+with h O
+deltamethrin t O
+have e O
+shown w O
+a 
+ O
+significant n O
+effect e O
 on O O
-locomotory O O
-ability O O
+locomotory o O
+ability l O
 of O O
-rainbow O O
-trout O O
-which O O
+rainbow n O
+trout u O
+which c O
 at O O
-the O O
-end O O
+the 	 O
+end 	 O
 of O O
-strong O O
-exposure O O
-( O O
-e O O
-. O O
-g O O
-. O O
-Protection O O
-levels O O
+strong o O
+exposure o O
+( 
+ O
+e 
+ O
+. 
+ O
+g 
+ O
+. 
+ O
+Protection t O
+levels e O
 of O O
 33 O O
-. O O
-3 O O
-% O O
-, O O
+. 
+ O
+3 
+ O
+% 
+ O
+, 
+ O
 36 O O
-. O O
-6 O O
-% O O
-and O O
+. 
+ O
+6 
+ O
+% 
+ O
+and 	 O
 37 O O
-. O O
-0 O O
-% O O
-were O O
-achieved O O
+. 
+ O
+0 
+ O
+% 
+ O
+were e O
+achieved i O
 in O O
-groups O O
-which O O
-had O O
-received O O
-, O O
-respectively O O
-, O O
-1000 O O
+groups u O
+which c O
+had 	 O
+received e O
+, 
+ O
+respectively p O
+, 
+ O
+1000 0 O
 20 O O
-- O O
-krad O O
-cercariae O O
-, O O
-1000 O O
+- 
+ O
+krad d O
+cercariae c O
+, 
+ O
+1000 0 O
 10 O O
-- O O
-krad O O
-cercariae O O
-, O O
-2000 O O
+- 
+ O
+krad d O
+cercariae c O
+, 
+ O
+2000 0 O
 40 O O
-- O O
-krad O O
-cercariae O O
-and O O
-2000 O O
+- 
+ O
+krad d O
+cercariae c O
+and 	 O
+2000 0 O
 60 O O
-- O O
-krad O O
-cercariae O O
-. O O
+- 
+ O
+krad d O
+cercariae c O
+. 
+ O
 In O O
-Types O O
-I O O
-and O O
+Types e O
+I 
+ O
+and 	 O
 II O O
-, O O
-capillary O O
-walls O O
-became O O
-thinner O O
-and O O
-more O O
-capillary O O
-lumens O O
-were O O
-visiable O O
-. O O
-Thus O O
-, O O
-primate O O
+, 
+ O
+capillary i O
+walls l O
+became a O
+thinner n O
+and 	 O
+more e O
+capillary i O
+lumens e O
+were e O
+visiable i O
+. 
+ O
+Thus s O
+, 
+ O
+primate m O
 vs O O
-. O O
-rodent O O
-promoter O O
-selectivity O O
-mediated O O
+. 
+ O
+rodent e O
+promoter m O
+selectivity e O
+mediated i O
 by O O
-the O O
-TBP S-GENE O
-- O O
-TAFI S-GENE O
-complex O O
+the 	 O
+TBP 	 O
+- 
+ O
+TAFI I O
+complex p O
 is O O
-likely O O
+likely e O
 to O O
 be O O
-the O O
-result O O
+the 	 O
+result u O
 of O O
-cumulative O O
-subtle O O
-differences O O
-between O O
-individual O O
-subunits O O
-that O O
-lead O O
+cumulative u O
+subtle t O
+differences f O
+between w O
+individual i O
+subunits u O
+that t O
+lead d O
 to O O
-species O O
-- O O
-specific O O
-properties O O
+species c O
+- 
+ O
+specific c O
+properties p O
 of O O
-RNA B-GENE O
-polymerase I-GENE O
-I E-GENE O
-transcription O O
-. O O
-The O O
-effects O O
+RNA 	 O
+polymerase y O
+I - O
+transcription n O
+. 
+ O
+The 	 O
+effects e O
 of O O
-pretreatment O O
-with O O
-the O O
-non O O
-- O O
-competitive O O
-NMDA O O
-antagonist O O
-( O O
-+ O O
-) O O
+pretreatment t O
+with h O
+the 	 O
+non 	 O
+- 
+ O
+competitive p O
+NMDA A O
+antagonist a O
+( 
+ O
++ 
+ O
+) 
+ O
 MK O O
-- O O
-801 O O
+- 
+ O
+801 	 O
 on O O
-the O O
-behavioral O O
-alterations O O
-induced O O
+the 	 O
+behavioral a O
+alterations e O
+induced u O
 by O O
-repeated O O
-restraint O O
-stress O O
-were O O
-investigated O O
-. O O
-When O O
-gene O O
-conversion O O
+repeated e O
+restraint t O
+stress e O
+were e O
+investigated e O
+. 
+ O
+When n O
+gene e O
+conversion v O
 is O O
-initiated O O
+initiated t O
 by O O
-a O O
-double O O
-- O O
-strand O O
-break O O
-( O O
-DSB O O
-) O O
-, O O
-any O O
-nonhomologous O O
-DNA O O
-that O O
-may O O
+a 
+ O
+double b O
+- 
+ O
+strand a O
+break a O
+( 
+ O
+DSB 	 O
+) 
+ O
+, 
+ O
+any 	 O
+nonhomologous h O
+DNA 	 O
+that t O
+may 	 O
 be O O
-present O O
+present s O
 at O O
-the O O
-ends O O
-must O O
+the 	 O
+ends s O
+must t O
 be O O
-removed O O
-before O O
-new O O
-DNA O O
-synthesis O O
-can O O
+removed o O
+before o O
+new 	 O
+DNA 	 O
+synthesis t O
+can 	 O
 be O O
-initiated O O
-. O O
+initiated t O
+. 
+ O
 In O O
-this O O
-reconstituted O O
-system O O
-, O O
-RNAP B-GENE O
-IIA E-GENE O
-, O O
-but O O
-not O O
-RNAP B-GENE O
-IIB E-GENE O
-, O O
-can O O
-transcribe O O
-from O O
-the O O
-DHFR B-GENE O
-promoter E-GENE O
-. O O
-The O O
-cDNA O O
-clones O O
-encode O O
-a O O
-polypeptide O O
+this s O
+reconstituted o O
+system t O
+, 
+ O
+RNAP P O
+IIA 	 O
+, 
+ O
+but 	 O
+not 	 O
+RNAP P O
+IIB 	 O
+, 
+ O
+can 	 O
+transcribe n O
+from m O
+the 	 O
+DHFR R O
+promoter m O
+. 
+ O
+The 	 O
+cDNA A O
+clones n O
+encode o O
+a 
+ O
+polypeptide y O
 of O O
-657 O O
-amino O O
-acids O O
-with O O
-a O O
-bHLH O O
-( O O
-basic O O
-- O O
-helix O O
-- O O
-loop O O
-- O O
-helix O O
-) O O
-domain O O
-, O O
-characteristic O O
+657 	 O
+amino n O
+acids d O
+with h O
+a 
+ O
+bHLH H O
+( 
+ O
+basic i O
+- 
+ O
+helix i O
+- 
+ O
+loop p O
+- 
+ O
+helix i O
+) 
+ O
+domain a O
+, 
+ O
+characteristic r O
 of O O
-a O O
-large O O
-family O O
+a 
+ O
+large g O
+family i O
 of O O
-transcription O O
-factors O O
-, O O
-and O O
-a O O
-PAS S-GENE O
-( O O
-Per S-GENE O
-- O O
-Arnt S-GENE O
-- O O
-Sim S-GENE O
-) O O
-domain O O
+transcription n O
+factors t O
+, 
+ O
+and 	 O
+a 
+ O
+PAS 	 O
+( 
+ O
+Per 	 O
+- 
+ O
+Arnt t O
+- 
+ O
+Sim 	 O
+) 
+ O
+domain a O
 in O O
-the O O
-amino O O
-- O O
-terminal O O
-half O O
-region O O
-. O O
-FTF O O
-( O O
-Joint O O
-Council O O
+the 	 O
+amino n O
+- 
+ O
+terminal m O
+half f O
+region i O
+. 
+ O
+FTF 	 O
+( 
+ O
+Joint n O
+Council n O
 of O O
-Civil O O
-Servants O O
-and O O
-Functionaries O O
-) O O
-: O O
-clarification O O
-about O O
-membership O O
+Civil i O
+Servants v O
+and 	 O
+Functionaries c O
+) 
+ O
+: 
+ O
+clarification r O
+about u O
+membership b O
 in O O
-the O O
-main O O
-organizations O O
-Lumbar O O
-spine O O
-bone O O
-mineral O O
-density O O
-( O O
-BMD O O
-) O O
+the 	 O
+main n O
+organizations a O
+Lumbar b O
+spine n O
+bone e O
+mineral e O
+density s O
+( 
+ O
+BMD 	 O
+) 
+ O
 by O O
-dual O O
-- O O
-energy O O
-X O O
-- O O
-ray O O
-absorptiometry O O
-( O O
-DXA O O
-) O O
-increased O O
+dual l O
+- 
+ O
+energy r O
+X 
+ O
+- 
+ O
+ray 	 O
+absorptiometry o O
+( 
+ O
+DXA 	 O
+) 
+ O
+increased r O
 by O O
-0 O O
-. O O
-6 O O
-% O O
-, O O
-3 O O
-. O O
-6 O O
-% O O
-and O O
-8 O O
-. O O
-1 O O
-% O O
-after O O
+0 
+ O
+. 
+ O
+6 
+ O
+% 
+ O
+, 
+ O
+3 
+ O
+. 
+ O
+6 
+ O
+% 
+ O
+and 	 O
+8 
+ O
+. 
+ O
+1 
+ O
+% 
+ O
+after e O
 48 O O
-weeks O O
+weeks k O
 in O O
-groups O O
-L O O
-, O O
-M O O
-and O O
-H O O
-respectively O O
-, O O
-responses O O
+groups u O
+L 
+ O
+, 
+ O
+M 
+ O
+and 	 O
+H 
+ O
+respectively p O
+, 
+ O
+responses p O
 in O O
-groups O O
-M O O
-and O O
-H O O
-being O O
-significantly O O
-higher O O
-than O O
+groups u O
+M 
+ O
+and 	 O
+H 
+ O
+being n O
+significantly n O
+higher h O
+than n O
 in O O
-L O O
-( O O
-p O O
-< O O
-0 O O
-. O O
+L 
+ O
+( 
+ O
+p 
+ O
+< 
+ O
+0 
+ O
+. 
+ O
 05 O O
-, O O
-Mann O O
-- O O
-Whitney O O
-U O O
-- O O
-test O O
-) O O
-. O O
-Synergy O O
-between O O
-interferon B-GENE O
-- I-GENE O
-gamma E-GENE O
-and O O
-tumor B-GENE O
-necrosis I-GENE O
-factor I-GENE O
-- I-GENE O
-alpha E-GENE O
+, 
+ O
+Mann n O
+- 
+ O
+Whitney t O
+U 
+ O
+- 
+ O
+test t O
+) 
+ O
+. 
+ O
+Synergy e O
+between w O
+interferon e O
+- - O
+gamma m O
+and 	 O
+tumor o O
+necrosis r O
+factor t O
+- - O
+alpha h O
 in O O
-transcriptional O O
-activation O O
+transcriptional n O
+activation i O
 is O O
-mediated O O
+mediated i O
 by O O
-cooperation O O
-between O O
-signal B-GENE O
-transducer I-GENE O
-and I-GENE O
-activator I-GENE O
-of I-GENE O
-transcription I-GENE O
-1 E-GENE O
-and O O
-nuclear B-GENE O
-factor I-GENE O
-kappaB E-GENE O
-. O O
+cooperation p O
+between w O
+signal n O
+transducer n O
+and 	 O
+activator i O
+of I O
+transcription n O
+1 - O
+and 	 O
+nuclear l O
+factor t O
+kappaB p O
+. 
+ O
 1H O O
-and O O
-15N O O
-magnetic O O
-resonance O O
-assignments O O
-, O O
-secondary O O
-structure O O
-, O O
-and O O
-tertiary O O
-fold O O
+and 	 O
+15N 	 O
+magnetic n O
+resonance o O
+assignments i O
+, 
+ O
+secondary o O
+structure u O
+, 
+ O
+and 	 O
+tertiary t O
+fold d O
 of O O
-Escherichia B-GENE O
-coli I-GENE O
-DnaJ I-GENE O
-( I-GENE O
-1 I-GENE O
-- I-GENE O
-78 I-GENE O
-) E-GENE O
-. O O
-A O O
-cDNA O O
-for O O
-human B-GENE O
-microfibril I-GENE O
-- I-GENE O
-associated I-GENE O
-glycoprotein I-GENE O
-- I-GENE O
-2 E-GENE O
-( O O
-MAGP B-GENE O
-- I-GENE O
-2 E-GENE O
-) O O
-was O O
-used O O
+Escherichia h O
+coli i O
+DnaJ J O
+( - O
+1 - O
+- - O
+78 I O
+) - O
+. 
+ O
+A 
+ O
+cDNA A O
+for 	 O
+human a O
+microfibril r O
+- - O
+associated o O
+glycoprotein c O
+- - O
+2 - O
+( 
+ O
+MAGP P O
+- - O
+2 - O
+) 
+ O
+was 	 O
+used d O
 to O O
-screen O O
-a O O
-human O O
-leukocyte O O
-genomic O O
-DNA O O
-library O O
+screen e O
+a 
+ O
+human a O
+leukocyte k O
+genomic o O
+DNA 	 O
+library r O
 in O O
-EMBL O O
-- O O
-3 O O
-vector O O
-. O O
-Furthermore O O
-, O O
-ERK S-GENE O
-phosphorylation O O
-was O O
-substantially O O
-prolonged O O
+EMBL L O
+- 
+ O
+3 
+ O
+vector t O
+. 
+ O
+Furthermore t O
+, 
+ O
+ERK 	 O
+phosphorylation s O
+was 	 O
+substantially s O
+prolonged l O
 in O O
 LC O O
-/ O O
-BRY O O
-- O O
-treated O O
-cells O O
-compared O O
+/ 
+ O
+BRY 	 O
+- 
+ O
+treated a O
+cells l O
+compared p O
 to O O
-those O O
-exposed O O
+those s O
+exposed o O
 to O O
-BRY O O
-alone O O
-, O O
-and O O
-pretreatment O O
-with O O
-the O O
-highly O O
-specific O O
-MEK S-GENE O
-inhibitors O O
-, O O
-PD98059 O O
-, O O
-U0126 O O
-, O O
-and O O
-SL327 O O
-, O O
-opposed O O
-ERK S-GENE O
-activation O O
-while O O
-protecting O O
-cells O O
-from O O
+BRY 	 O
+alone n O
+, 
+ O
+and 	 O
+pretreatment t O
+with h O
+the 	 O
+highly h O
+specific c O
+MEK 	 O
+inhibitors i O
+, 
+ O
+PD98059 8 O
+, 
+ O
+U0126 2 O
+, 
+ O
+and 	 O
+SL327 2 O
+, 
+ O
+opposed o O
+ERK 	 O
+activation i O
+while l O
+protecting t O
+cells l O
+from m O
 LC O O
-/ O O
-BRY O O
-- O O
-induced O O
-lethality O O
-. O O
-The O O
-cholesterol B-GENE O
-7alpha I-GENE O
-- I-GENE O
-hydroxylase I-GENE O
-gene E-GENE O
-( O O
-CYP7A S-GENE O
-) O O
+/ 
+ O
+BRY 	 O
+- 
+ O
+induced u O
+lethality h O
+. 
+ O
+The 	 O
+cholesterol l O
+7alpha p O
+- - O
+hydroxylase r O
+gene e O
+( 
+ O
+CYP7A 7 O
+) 
+ O
 is O O
-transcriptionally O O
-regulated O O
+transcriptionally n O
+regulated u O
 by O O
-a O O
-number O O
+a 
+ O
+number b O
 of O O
-factors O O
-, O O
-including O O
-hormones O O
-, O O
-bile O O
-acids O O
-, O O
-and O O
-diurnal O O
-rhythm O O
-. O O
-CNS O O
-preventive O O
-treatment O O
-without O O
-cranial O O
-irradiation O O
-was O O
-effective O O
+factors t O
+, 
+ O
+including l O
+hormones m O
+, 
+ O
+bile e O
+acids d O
+, 
+ O
+and 	 O
+diurnal r O
+rhythm t O
+. 
+ O
+CNS 	 O
+preventive v O
+treatment a O
+without h O
+cranial n O
+irradiation a O
+was 	 O
+effective e O
 in O O
-all O O
-the O O
-groups O O
+all 	 O
+the 	 O
+groups u O
 of O O
-ALL O O
-patients O O
-. O O
-Additionally O O
-, O O
-the O O
-members O O
+ALL 	 O
+patients i O
+. 
+ O
+Additionally i O
+, 
+ O
+the 	 O
+members b O
 of O O
-this O O
-family O O
-display O O
-strong O O
-sequence O O
-homologies O O
-between O O
-their O O
-larger O O
-C O O
-- O O
-terminal O O
-effector O O
-binding O O
-/ O O
-oligomerization O O
-domains O O
-. O O
-Aspartame O O
+this s O
+family i O
+display p O
+strong o O
+sequence u O
+homologies o O
+between w O
+their i O
+larger g O
+C 
+ O
+- 
+ O
+terminal m O
+effector e O
+binding d O
+/ 
+ O
+oligomerization g O
+domains a O
+. 
+ O
+Aspartame a O
 is O O
-a O O
-synthetic O O
-sweetener O O
-commonly O O
-used O O
+a 
+ O
+synthetic t O
+sweetener e O
+commonly m O
+used d O
 in O O
-soft O O
-drinks O O
-and O O
-many O O
-foods O O
-. O O
-The O O
-rat O O
-anococcygeus O O
-muscle O O
-was O O
-used O O
+soft t O
+drinks n O
+and 	 O
+many y O
+foods d O
+. 
+ O
+The 	 O
+rat 	 O
+anococcygeus c O
+muscle c O
+was 	 O
+used d O
 in O O
-postsynaptic O O
-studies O O
-. O O
-The O O
-purpose O O
+postsynaptic t O
+studies d O
+. 
+ O
+The 	 O
+purpose p O
 of O O
-this O O
-presentation O O
+this s O
+presentation s O
 is O O
 to O O
-review O O
-the O O
-current O O
-state O O
+review i O
+the 	 O
+current r O
+state t O
 of O O
-knowledge O O
-regarding O O
-5 O O
-, O O
-8 O O
-, O O
+knowledge w O
+regarding a O
+5 
+ O
+, 
+ O
+8 
+ O
+, 
+ O
 11 O O
-, O O
+, 
+ O
 14 O O
-- O O
-eicosatetraynoic O O
-acid O O
-( O O
-ETYA O O
-, O O
+- 
+ O
+eicosatetraynoic o O
+acid d O
+( 
+ O
+ETYA A O
+, 
+ O
 Ro O O
-3 O O
-- O O
-1428 O O
-) O O
-and O O
-its O O
-effects O O
+3 
+ O
+- 
+ O
+1428 8 O
+) 
+ O
+and 	 O
+its 	 O
+effects e O
 on O O
-lipid O O
-metabolism O O
-. O O
-A O O
-Meis1 B-GENE O
-cDNA E-GENE O
-clone O O
-that O O
-encoded O O
-a O O
-novel O O
-member O O
+lipid i O
+metabolism a O
+. 
+ O
+A 
+ O
+Meis1 s O
+cDNA A O
+clone n O
+that t O
+encoded o O
+a 
+ O
+novel e O
+member b O
 of O O
-the O O
-homeobox B-GENE O
-gene I-GENE O
-family E-GENE O
-was O O
-identified O O
-. O O
-The O O
-S B-GENE O
-. I-GENE O
-typhimurium I-GENE O
-aspartyl I-GENE O
-/ I-GENE O
-asparaginyl I-GENE O
-beta I-GENE O
-- I-GENE O
-hydroxylase I-GENE O
-homologue E-GENE O
-( O O
-designated O O
-lpxO S-GENE O
-) O O
-was O O
-cloned O O
-into O O
-pBluescriptSK O O
-and O O
-expressed O O
+the 	 O
+homeobox e O
+gene e O
+family i O
+was 	 O
+identified n O
+. 
+ O
+The 	 O
+S - O
+. - O
+typhimurium h O
+aspartyl a O
+/ - O
+asparaginyl a O
+beta a O
+- - O
+hydroxylase r O
+homologue o O
+( 
+ O
+designated i O
+lpxO O O
+) 
+ O
+was 	 O
+cloned n O
+into o O
+pBluescriptSK u O
+and 	 O
+expressed r O
 in O O
-Escherichia O O
-coli O O
-K O O
-- O O
+Escherichia h O
+coli i O
+K 
+ O
+- 
+ O
 12 O O
-, O O
-which O O
-does O O
-not O O
-contain O O
-lpxO S-GENE O
-. O O
-The O O
-levels O O
+, 
+ O
+which c O
+does s O
+not 	 O
+contain t O
+lpxO O O
+. 
+ O
+The 	 O
+levels e O
 of O O
-soluble O O
-L B-GENE O
-- I-GENE O
-selectin E-GENE O
-and O O
-ICAM B-GENE O
-- I-GENE O
-1 E-GENE O
+soluble u O
+L - O
+- - O
+selectin e O
+and 	 O
+ICAM M O
+- - O
+1 - O
 in O O
-the O O
-serum O O
-were O O
-determined O O
+the 	 O
+serum u O
+were e O
+determined e O
 by O O
-the O O
-ELISA O O
-method O O
-. O O
-The O O
-highest O O
-TTX S-GENE O
-content O O
+the 	 O
+ELISA S O
+method h O
+. 
+ O
+The 	 O
+highest h O
+TTX 	 O
+content t O
 is O O
 10 O O
-. O O
-0 O O
-microg O O
-/ O O
-g O O
+. 
+ O
+0 
+ O
+microg r O
+/ 
+ O
+g 
+ O
 in O O
-N O O
-. O O
-livescens O O
-. O O
+N 
+ O
+. 
+ O
+livescens e O
+. 
+ O
 On O O
-the O O
-other O O
-hand O O
-hypokalemia O O
-, O O
-induced O O
+the 	 O
+other e O
+hand d O
+hypokalemia o O
+, 
+ O
+induced u O
 by O O
-diuretics O O
-, O O
-may O O
-also O O
+diuretics r O
+, 
+ O
+may 	 O
+also o O
 be O O
-accompanied O O
+accompanied o O
 by O O
-a O O
-significant O O
-depletion O O
+a 
+ O
+significant n O
+depletion l O
 of O O
-total O O
-body O O
-K O O
-, O O
-bringing O O
-about O O
-more O O
-general O O
-consequences O O
-. O O
-Glutathione B-GENE O
-reductase E-GENE O
-activities O O
+total a O
+body y O
+K 
+ O
+, 
+ O
+bringing n O
+about u O
+more e O
+general e O
+consequences s O
+. 
+ O
+Glutathione t O
+reductase u O
+activities i O
 in O O
-liver O O
-, O O
-kidney O O
-, O O
-lung O O
-, O O
-and O O
-brain O O
-were O O
-not O O
-affected O O
+liver e O
+, 
+ O
+kidney n O
+, 
+ O
+lung g O
+, 
+ O
+and 	 O
+brain i O
+were e O
+not 	 O
+affected e O
 by O O
-diet O O
-. O O
-Here O O
-, O O
+diet t O
+. 
+ O
+Here e O
+, 
+ O
 we O O
-describe O O
-the O O
-nucleotide O O
-( O O
+describe c O
+the 	 O
+nucleotide l O
+( 
+ O
 nt O O
-) O O
-sequence O O
-and O O
-genomic O O
-organization O O
+) 
+ O
+sequence u O
+and 	 O
+genomic o O
+organization a O
 of O O
-ipiB S-GENE O
-and O O
-ipiO S-GENE O
-. O O
-Vancomycin O O
-and O O
-tetracycline O O
-eliminated O O
-toxin O O
+ipiB B O
+and 	 O
+ipiO O O
+. 
+ O
+Vancomycin c O
+and 	 O
+tetracycline r O
+eliminated m O
+toxin i O
 in O O
-stools O O
-and O O
-delayed O O
-death O O
-. O O
-Soluble O O
-fibrin S-GENE O
-monomer O O
-complexes O O
+stools o O
+and 	 O
+delayed a O
+death t O
+. 
+ O
+Soluble u O
+fibrin r O
+monomer o O
+complexes p O
 in O O
-thromboembolism O O
-Comparison O O
+thromboembolism o O
+Comparison p O
 to O O
-the O O
-murine O O
-homologues O O
+the 	 O
+murine i O
+homologues o O
 of O O
-these O O
-molecules O O
-reveals O O
-a O O
-high O O
-degree O O
+these s O
+molecules e O
+reveals e O
+a 
+ O
+high h O
+degree r O
 of O O
-conservation O O
-between O O
-the O O
-products O O
+conservation s O
+between w O
+the 	 O
+products d O
 of O O
-one O O
+one 	 O
 of O O
-these O O
-genes O O
-, O O
-Fc B-GENE O
-gamma I-GENE O
-RIIb E-GENE O
-, O O
-and O O
-the O O
-murine B-GENE O
-beta I-GENE O
-gene E-GENE O
+these s O
+genes e O
+, 
+ O
+Fc B O
+gamma m O
+RIIb b O
+, 
+ O
+and 	 O
+the 	 O
+murine i O
+beta a O
+gene e O
 in O O
-primary O O
-sequence O O
-, O O
-splicing O O
-pattern O O
-, O O
-and O O
-tissue O O
-distribution O O
-. O O
-Acidosis O O
-provoked O O
+primary m O
+sequence u O
+, 
+ O
+splicing i O
+pattern t O
+, 
+ O
+and 	 O
+tissue s O
+distribution t O
+. 
+ O
+Acidosis d O
+provoked v O
 by O O
 30 O O
-% O O
-CO2 O O
-irreversibly O O
-increased O O
-the O O
-BDRT O O
-, O O
-however O O
-the O O
-TRT O O
-were O O
-not O O
-changed O O
-. O O
-Others O O
+% 
+ O
+CO2 	 O
+irreversibly e O
+increased r O
+the 	 O
+BDRT T O
+, 
+ O
+however e O
+the 	 O
+TRT 	 O
+were e O
+not 	 O
+changed n O
+. 
+ O
+Others e O
 as O O
-for O O
-example O O
-C O O
-- O O
+for 	 O
+example m O
+C 
+ O
+- 
+ O
 11 O O
-labeled O O
-short O O
-chain O O
-fatty O O
-acids O O
-are O O
+labeled e O
+short r O
+chain i O
+fatty t O
+acids d O
+are 	 O
 on O O
-the O O
-horizon O O
-. O O
-The O O
-average O O
-progression O O
-was O O
+the 	 O
+horizon i O
+. 
+ O
+The 	 O
+average r O
+progression g O
+was 	 O
 11 O O
-. O O
-6 O O
-( O O
+. 
+ O
+6 
+ O
+( 
+ O
 SD O O
-9 O O
-. O O
-0 O O
-) O O
-. O O
+9 
+ O
+. 
+ O
+0 
+ O
+) 
+ O
+. 
+ O
 80 O O
 bp O O
-) O O
-surrounding O O
-the O O
-site O O
+) 
+ O
+surrounding r O
+the 	 O
+site e O
 of O O
-transcription O O
-initiation O O
-. O O
-Ultrastructure O O
-and O O
-toxin O O
-formation O O
+transcription n O
+initiation t O
+. 
+ O
+Ultrastructure r O
+and 	 O
+toxin i O
+formation m O
 of O O
-Cor O O
-. O O
-diphtheriae O O
+Cor 	 O
+. 
+ O
+diphtheriae h O
 PW O O
-- O O
-8 O O
-cultured O O
+- 
+ O
+8 
+ O
+cultured t O
 in O O
-the O O
-presence O O
+the 	 O
+presence s O
 of O O
-penicillin O O
-EMT S-GENE O
-was O O
-localized O O
+penicillin i O
+EMT 	 O
+was 	 O
+localized a O
 to O O
-chromosome O O
-5q31 O O
-- O O
+chromosome o O
+5q31 1 O
+- 
+ O
 32 O O
-, O O
-a O O
-region O O
-that O O
-contains O O
-the O O
-genes O O
-for O O
-several O O
-growth O O
-factors O O
-and O O
-receptors O O
+, 
+ O
+a 
+ O
+region i O
+that t O
+contains t O
+the 	 O
+genes e O
+for 	 O
+several e O
+growth w O
+factors t O
+and 	 O
+receptors e O
 as O O
-well O O
+well l O
 as O O
-early O O
-activation O O
-genes O O
-, O O
-particularly O O
-those O O
-involved O O
+early l O
+activation i O
+genes e O
+, 
+ O
+particularly t O
+those s O
+involved o O
 in O O
-the O O
-hematopoietic O O
-system O O
-. O O
-Tbx6 S-GENE O
-maps O O
+the 	 O
+hematopoietic a O
+system t O
+. 
+ O
+Tbx6 6 O
+maps s O
 to O O
-chromosome O O
-7 O O
-and O O
-does O O
-not O O
-appear O O
+chromosome o O
+7 
+ O
+and 	 O
+does s O
+not 	 O
+appear e O
 to O O
 be O O
-linked O O
+linked k O
 to O O
-any O O
-known O O
-mutation O O
-. O O
-Kaposi O O
-' O O
-s O O
-eruptive O O
-disease O O
-. O O
+any 	 O
+known w O
+mutation a O
+. 
+ O
+Kaposi o O
+' 
+ O
+s 
+ O
+eruptive p O
+disease e O
+. 
+ O
 It O O
 is O O
-not O O
-tested O O
-yet O O
-, O O
-whether O O
-the O O
-extent O O
+not 	 O
+tested t O
+yet 	 O
+, 
+ O
+whether t O
+the 	 O
+extent e O
 of O O
-glaucoma O O
-damage O O
-should O O
+glaucoma u O
+damage a O
+should u O
 be O O
-better O O
-quantified O O
-using O O
-reference O O
-plane O O
-1 O O
+better t O
+quantified n O
+using n O
+reference e O
+plane n O
+1 
+ O
 or O O
-2 O O
-. O O
-Importin B-GENE O
-beta E-GENE O
-mediates O O
-nuclear O O
-translocation O O
+2 
+ O
+. 
+ O
+Importin o O
+beta a O
+mediates i O
+nuclear l O
+translocation n O
 of O O
-Smad B-GENE O
-3 E-GENE O
-. O O
-The O O
-encoded O O
-protein O O
-contains O O
+Smad d O
+3 - O
+. 
+ O
+The 	 O
+encoded o O
+protein t O
+contains t O
 an O O
-amino O O
-terminal O O
-PDZ S-GENE O
-domain O O
-, O O
-followed O O
+amino n O
+terminal m O
+PDZ 	 O
+domain a O
+, 
+ O
+followed l O
 by O O
-a O O
-predicted O O
-coiled O O
-- O O
-coil O O
-region O O
-, O O
-a O O
-PEST O O
-domain O O
-, O O
-and O O
-a O O
-carboxy O O
-- O O
-terminal O O
-SAM O O
-domain O O
-. O O
-Using O O
-lasers O O
-, O O
-PRK O O
-involves O O
-reshaping O O
-the O O
-cornea O O
+a 
+ O
+predicted d O
+coiled l O
+- 
+ O
+coil l O
+region i O
+, 
+ O
+a 
+ O
+PEST T O
+domain a O
+, 
+ O
+and 	 O
+a 
+ O
+carboxy b O
+- 
+ O
+terminal m O
+SAM 	 O
+domain a O
+. 
+ O
+Using n O
+lasers e O
+, 
+ O
+PRK 	 O
+involves o O
+reshaping h O
+the 	 O
+cornea n O
 so O O
-that O O
-its O O
-refractive O O
-power O O
+that t O
+its 	 O
+refractive r O
+power e O
 is O O
-increased O O
-. O O
-However O O
-, O O
-sphincter O O
-length O O
-decreased O O
-with O O
-age O O
-from O O
+increased r O
+. 
+ O
+However e O
+, 
+ O
+sphincter i O
+length g O
+decreased r O
+with h O
+age 	 O
+from m O
 24 O O
-. O O
-3 O O
+. 
+ O
+3 
+ O
 to O O
 14 O O
-. O O
-8 O O
+. 
+ O
+8 
+ O
 mm O O
-. O O
-, O O
-maximal O O
-urethral O O
-pressure O O
-from O O
+. 
+ O
+, 
+ O
+maximal i O
+urethral t O
+pressure s O
+from m O
 88 O O
-. O O
-7 O O
+. 
+ O
+7 
+ O
 to O O
 55 O O
 cm O O
-. O O
-water O O
-and O O
-maximal O O
-urethral O O
-pressure O O
-during O O
-voluntary O O
-contraction O O
-from O O
-221 O O
-. O O
-4 O O
+. 
+ O
+water e O
+and 	 O
+maximal i O
+urethral t O
+pressure s O
+during i O
+voluntary u O
+contraction t O
+from m O
+221 	 O
+. 
+ O
+4 
+ O
 to O O
