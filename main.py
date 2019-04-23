@@ -7,11 +7,11 @@ def main(dataset_path):
     parser = argparse.ArgumentParser(description='Learning with LM-LSTM-CRF together with Language Model')
     parser.add_argument('--rand_embedding', action='store_true', help='random initialize word embedding')
     parser.add_argument('--emb_file', default='data_bioner_5/source.txt', help='path to pre-trained embedding')
-    parser.add_argument('--train_file', nargs='+', default=[dataset_path+"/train"],
+    parser.add_argument('--train_file', nargs='+', default=[dataset_path+"/train", "data_bioner_5/BC4CHEMD-IOBES/train"],
                         help='path to training file')
-    parser.add_argument('--dev_file', nargs='+', default=[dataset_path+"/devel"],
+    parser.add_argument('--dev_file', nargs='+', default=[dataset_path+"/devel", "data_bioner_5/BC4CHEMD-IOBES/devel"],
                         help='path to development file')
-    parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test"],
+    parser.add_argument('--test_file', nargs='+', default=[dataset_path+"/test", "data_bioner_5/BC4CHEMD-IOBES/test"],
                         help='path to test file')
     parser.add_argument('--gpu', type=int, default=-1, help='gpu id')
     parser.add_argument('--batch_size', type=int, default=10, help='batch_size')
@@ -55,6 +55,7 @@ def main(dataset_path):
     model.read_dataset(None, None)
     model.build_model()
     loss_list, acc_list = model.train(None)
+    """
     plt.subplot(2, 1, 1)
     plt.title('Training loss')
     # loss_hist_ = loss_hist[1::100]  # sparse the curve a bit
@@ -71,6 +72,7 @@ def main(dataset_path):
     # plt.gcf().set_size_inches(15, 12)
     plt.savefig('BC2GM-IOBES.png')
     plt.show()
+    """
     out_path = model.predict(None, None, None)
     test_f1, test_pre, test_rec, test_acc = model.evaluate(None, None, None, None)
     print("Test evaluation: f1 = %.4f, recall = %.4f, precision = %.4f " % (test_f1, test_rec, test_pre))

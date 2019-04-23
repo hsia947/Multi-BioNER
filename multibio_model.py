@@ -271,7 +271,7 @@ class MultiBio(Ner):
         :param kwargs:
         :return:
         """
-        print('annotating')
+        #print('annotating')
         with open(self.args.output_file + str(self.file_no) + '.txt', 'w') as fout:
             self.predictor.output_batch(self.ner_model, self.test_word[self.file_no], self.test_word_tag[self.file_no],fout, self.file_no)
         return self.args.output_file + str(self.file_no) + '.txt'
@@ -280,7 +280,7 @@ class MultiBio(Ner):
         return self.evaluator.calc_score(self.ner_model, self.test_dataset_loader[self.file_no], self.file_no)
 
     def save_model(self, file):
-        print("saving model")
+        #print("saving model")
         utils.save_checkpoint({
             'epoch': self.args.start_epoch,
             'state_dict': self.ner_model.state_dict(),
